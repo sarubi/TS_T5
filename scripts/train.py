@@ -36,7 +36,7 @@ args_dict = dict(
 features_kwargs = {
     'DependencyTreeDepthRatioFeature': {'target_ratio': 0.1},
     'DependencyTreeLengthRatioFeature': {'target_ratio': 0.1},
-    'DiffWordRatioFeature': {'target_ratio': 0.1},
+    'DifficultWordsRatioFeature': {'target_ratio': 0.1},
     'WordCountRatioFeature': {'target_ratio': 0.1}
 }
 args_dict['features_kwargs'] = features_kwargs

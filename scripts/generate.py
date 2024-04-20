@@ -11,7 +11,7 @@ from source.evaluate import simplify_file
 features_kwargs = {
     'DependencyTreeDepthRatioFeature': {'target_ratio': 0.1},
     'DependencyTreeLengthRatioFeature': {'target_ratio': 0.1},
-    'DiffWordRatioFeature': {'target_ratio': 0.1},
+    'DifficultWordsRatioFeature': {'target_ratio': 0.1},
     'WordCountRatioFeature': {'target_ratio': 0.1}
 
     # 'CharRatioFeature': {'target_ratio': 0.95},

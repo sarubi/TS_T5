@@ -429,7 +429,7 @@ if __name__ == '__main__':
     features_kwargs = {
         'DependencyTreeDepthRatioFeature': {'target_ratio': 0.1},
         'DependencyTreeLengthRatioFeature': {'target_ratio': 0.1},
-        'DiffWordRatioFeature': {'target_ratio': 0.1},
+        'DifficultWordsRatioFeature': {'target_ratio': 0.1},
         'WordCountRatioFeature': {'target_ratio': 0.1}
     }
     # features_kwargs = {}

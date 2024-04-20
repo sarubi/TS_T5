@@ -10,7 +10,7 @@ from source.evaluate import evaluate_on_TurkCorpus, evaluate_on_asset, evaluate_
 features_kwargs = {
     'DependencyTreeDepthRatioFeature': {'target_ratio': 0.1},
     'DependencyTreeLengthRatioFeature': {'target_ratio': 0.1},
-    'DiffWordRatioFeature': {'target_ratio': 0.1},
+    'DifficultWordsRatioFeature': {'target_ratio': 0.1},
     'WordCountRatioFeature': {'target_ratio': 0.1}
     # # 'WordRatioFeature': {'target_ratio': 1.05},
     # 'CharRatioFeature': {'target_ratio': 0.95},
