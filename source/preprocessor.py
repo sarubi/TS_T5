@@ -257,6 +257,39 @@ class DependencyTreeDepthRatioFeature(RatioFeature):
         return get_spacy_model()(text)
 
 
+class DependencyTreeLengthRatioFeature(RatioFeature):
+    def __init__(self, *args, **kwargs):
+        super().__init__(self.get_dependency_tree_length_ratio, *args, **kwargs)
+
+    def get_dependency_tree_length_ratio(self, complex_sentence, simple_sentence):
+        return round(
+            safe_division(self.get_dependency_tree_length(simple_sentence),
+                          self.get_dependency_tree_length(complex_sentence)))
+
+    @lru_cache(maxsize=1024)
+    def get_dependency_tree_length(self, sentence):
+        return None
+
+    @lru_cache(maxsize=10 ** 6)
+    def spacy_process(self, text):
+        return get_spacy_model()(text)
+
+
+class DifficultWordsRatioFeature(RatioFeature):
+    def __init__(self, *args, **kwargs):
+        super().__init__(self.get_difficult_words_ratio, *args, **kwargs)
+
+    def get_difficult_words_ratio(self, complex_sentence, simple_sentence):
+        return None
+
+
+class WordCountRatioFeature(RatioFeature):
+    def __init__(self, *args, **kwargs):
+        super().__init__(self.get_word_count_ratio, *args, **kwargs)
+
+    def get_word_count_ratio(self, complex_sentence, simple_sentence):
+        return None
+
 class Preprocessor:
     def __init__(self, features_kwargs=None):
         super().__init__()

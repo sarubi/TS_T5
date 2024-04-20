@@ -26,3 +26,4 @@ python -m spacy download en_core_web_md
 
 
 CUDA_VISIBLE_DEVICES=0,1,2,3 python scripts/train.py
+CUDA_VISIBLE_DEVICES=3 python scripts/train.py
