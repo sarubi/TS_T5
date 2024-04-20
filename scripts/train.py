@@ -9,6 +9,8 @@ from source.train import run_training
 from source.resources import get_experiment_dir, WIKILARGE_DATASET
 import torch
 
+os.environ['CUDA_VISIBLE_DEVICES'] = '3'  # Use the first GPU
+
 dataset = WIKILARGE_DATASET
 args_dict = dict(
     model_name='t5-base',
