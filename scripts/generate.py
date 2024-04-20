@@ -9,10 +9,15 @@ from source.evaluate import simplify_file
 
 
 features_kwargs = {
-    'CharRatioFeature': {'target_ratio': 0.95},
-    'LevenshteinRatioFeature': {'target_ratio': 0.75},
-    'WordRankRatioFeature': {'target_ratio': 0.75},
-    'DependencyTreeDepthRatioFeature': {'target_ratio': 0.75}
+    'DependencyTreeDepthRatioFeature': {'target_ratio': 0.1},
+    'DependencyTreeLengthRatioFeature': {'target_ratio': 0.1},
+    'DiffWordRatioFeature': {'target_ratio': 0.1},
+    'WordCountRatioFeature': {'target_ratio': 0.1}
+
+    # 'CharRatioFeature': {'target_ratio': 0.95},
+    # 'LevenshteinRatioFeature': {'target_ratio': 0.75},
+    # 'WordRankRatioFeature': {'target_ratio': 0.75},
+    # 'DependencyTreeDepthRatioFeature': {'target_ratio': 0.75}
 }
 
 

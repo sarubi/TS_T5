@@ -386,7 +386,7 @@ def train(train_args):
 
     print("training finished")
 
-    # print("Saving model")
-    # model.model.save_pretrained(args.output_dir)
+    print("Saving model")
+    model.model.save_pretrained(args.output_dir)
 
-    # print("Saved model")
+    print("Saved model")

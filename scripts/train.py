@@ -34,11 +34,10 @@ args_dict = dict(
 )
 
 features_kwargs = {
-    # 'WordRatioFeature': {'target_ratio': 0.8},
-    'CharRatioFeature': {'target_ratio': 0.8},
-    'LevenshteinRatioFeature': {'target_ratio': 0.8},
-    'WordRankRatioFeature': {'target_ratio': 0.8},
-    'DependencyTreeDepthRatioFeature': {'target_ratio': 0.8}
+    'DependencyTreeDepthRatioFeature': {'target_ratio': 0.1},
+    'DependencyTreeLengthRatioFeature': {'target_ratio': 0.1},
+    'DiffWordRatioFeature': {'target_ratio': 0.1},
+    'WordCountRatioFeature': {'target_ratio': 0.1}
 }
 args_dict['features_kwargs'] = features_kwargs
 run_training(args_dict, dataset)

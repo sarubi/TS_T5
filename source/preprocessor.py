@@ -81,80 +81,80 @@ def spacy_process(text):
     return get_spacy_model()(str(text))
 
 
-@lru_cache(maxsize=1)
-def get_word2rank(vocab_size=np.inf):
-    model_filepath = DUMPS_DIR / f"{WORD_EMBEDDINGS_NAME}.pk"
-    if model_filepath.exists():
-        return load_dump(model_filepath)
-    else:
-        print("Downloading glove.42B.300d ...")
-        download_glove(model_name='glove.42B.300d', dest_dir=str(DUMPS_DIR))
-        print("Preprocessing word2rank...")
-        DUMPS_DIR.mkdir(parents=True, exist_ok=True)
-        WORD_EMBEDDINGS_PATH = DUMPS_DIR / f'{WORD_EMBEDDINGS_NAME}.txt'
-        lines_generator = yield_lines(WORD_EMBEDDINGS_PATH)
-        word2rank = {}
-        # next(lines_generator)
-        for i, line in enumerate(lines_generator):
-            if i >= vocab_size: break
-            word = line.split(' ')[0]
-            word2rank[word] = i
-        dump(word2rank, model_filepath)
-        txt_file = DUMPS_DIR / f'{WORD_EMBEDDINGS_NAME}.txt'
-        zip_file = DUMPS_DIR / f'{WORD_EMBEDDINGS_NAME}.zip'
-        if txt_file.exists(): txt_file.unlink()
-        if zip_file.exists(): zip_file.unlink()
-        return word2rank
+# @lru_cache(maxsize=1)
+# def get_word2rank(vocab_size=np.inf):
+#     model_filepath = DUMPS_DIR / f"{WORD_EMBEDDINGS_NAME}.pk"
+#     if model_filepath.exists():
+#         return load_dump(model_filepath)
+#     else:
+#         print("Downloading glove.42B.300d ...")
+#         download_glove(model_name='glove.42B.300d', dest_dir=str(DUMPS_DIR))
+#         print("Preprocessing word2rank...")
+#         DUMPS_DIR.mkdir(parents=True, exist_ok=True)
+#         WORD_EMBEDDINGS_PATH = DUMPS_DIR / f'{WORD_EMBEDDINGS_NAME}.txt'
+#         lines_generator = yield_lines(WORD_EMBEDDINGS_PATH)
+#         word2rank = {}
+#         # next(lines_generator)
+#         for i, line in enumerate(lines_generator):
+#             if i >= vocab_size: break
+#             word = line.split(' ')[0]
+#             word2rank[word] = i
+#         dump(word2rank, model_filepath)
+#         txt_file = DUMPS_DIR / f'{WORD_EMBEDDINGS_NAME}.txt'
+#         zip_file = DUMPS_DIR / f'{WORD_EMBEDDINGS_NAME}.zip'
+#         if txt_file.exists(): txt_file.unlink()
+#         if zip_file.exists(): zip_file.unlink()
+#         return word2rank
 
 
-@lru_cache(maxsize=10000)
-def get_normalized_rank(word):
-    max = len(get_word2rank())
-    rank = get_word2rank().get(word, max)
-    return np.log(1 + rank) / np.log(1 + max)
-    # return np.log(1 + rank)
-    
-@lru_cache(maxsize=2048)
-def get_complexity_score2(sentence):
-    words = tokenize(remove_stopwords(remove_punctuation(sentence)))
-    words = [word for word in words if word in get_word2rank()]  # remove unknown words
-    if len(words) == 0:
-        return 1.0
-    return np.array([get_normalized_rank(word) for word in words]).mean()
-
-@lru_cache(maxsize=1)
-def get_word_frequency():
-    model_filepath = DUMPS_DIR / f'{WORD_FREQUENCY_FILEPATH.stem}.pk'
-    if model_filepath.exists():
-        return load_dump(model_filepath)
-    else:
-        DUMPS_DIR.mkdir(parents=True, exist_ok=True) 
-        word_freq = {}
-        for line in yield_lines(WORD_FREQUENCY_FILEPATH):
-            chunks = line.split(' ')
-            word = chunks[0]
-            freq = int(chunks[1])
-            word_freq[word] = freq
-        dump(word_freq, model_filepath)
-        return word_freq
-
-@lru_cache(maxsize=10000)
-def get_normalized_frequency(word):
-    max = 153141437 # the 153141437, the max frequency
-    freq = get_word_frequency().get(word, 0)
-    return 1.0 - np.log(1 + freq) / np.log(1 + max)
-
-
-@lru_cache(maxsize=2048)
-def get_complexity_score(sentence):
-    # words = tokenize(remove_stopwords(remove_punctuation(sentence)))
-    words = tokenize(remove_punctuation(sentence))
-    words = [word for word in words if word in get_word2rank()]  # remove unknown words
-    if len(words) == 0:
-        return 1.0
-    
-    return np.array([get_normalized_frequency(word.lower()) for word in words]).mean()
-
+# @lru_cache(maxsize=10000)
+# def get_normalized_rank(word):
+#     max = len(get_word2rank())
+#     rank = get_word2rank().get(word, max)
+#     return np.log(1 + rank) / np.log(1 + max)
+#     # return np.log(1 + rank)
+#
+# @lru_cache(maxsize=2048)
+# def get_complexity_score2(sentence):
+#     words = tokenize(remove_stopwords(remove_punctuation(sentence)))
+#     words = [word for word in words if word in get_word2rank()]  # remove unknown words
+#     if len(words) == 0:
+#         return 1.0
+#     return np.array([get_normalized_rank(word) for word in words]).mean()
+#
+# @lru_cache(maxsize=1)
+# def get_word_frequency():
+#     model_filepath = DUMPS_DIR / f'{WORD_FREQUENCY_FILEPATH.stem}.pk'
+#     if model_filepath.exists():
+#         return load_dump(model_filepath)
+#     else:
+#         DUMPS_DIR.mkdir(parents=True, exist_ok=True)
+#         word_freq = {}
+#         for line in yield_lines(WORD_FREQUENCY_FILEPATH):
+#             chunks = line.split(' ')
+#             word = chunks[0]
+#             freq = int(chunks[1])
+#             word_freq[word] = freq
+#         dump(word_freq, model_filepath)
+#         return word_freq
+#
+# @lru_cache(maxsize=10000)
+# def get_normalized_frequency(word):
+#     max = 153141437 # the 153141437, the max frequency
+#     freq = get_word_frequency().get(word, 0)
+#     return 1.0 - np.log(1 + freq) / np.log(1 + max)
+#
+#
+# @lru_cache(maxsize=2048)
+# def get_complexity_score(sentence):
+#     # words = tokenize(remove_stopwords(remove_punctuation(sentence)))
+#     words = tokenize(remove_punctuation(sentence))
+#     words = [word for word in words if word in get_word2rank()]  # remove unknown words
+#     if len(words) == 0:
+#         return 1.0
+#
+#     return np.array([get_normalized_frequency(word.lower()) for word in words]).mean()
+#
 
 
 def download_requirements():
@@ -186,50 +186,50 @@ class RatioFeature:
         return name
 
 
-class WordRatioFeature(RatioFeature):
-    def __init__(self, *args, **kwargs):
-        super().__init__(self.get_word_length_ratio, *args, **kwargs)
-
-    def get_word_length_ratio(self, complex_sentence, simple_sentence):
-        return round(safe_division(len(tokenize(simple_sentence)), len(tokenize(complex_sentence))))
-
-
-class CharRatioFeature(RatioFeature):
-    def __init__(self, *args, **kwargs):
-        super().__init__(self.get_char_length_ratio, *args, **kwargs)
-
-    def get_char_length_ratio(self, complex_sentence, simple_sentence):
-        return round(safe_division(len(simple_sentence), len(complex_sentence)))
-
-
-class LevenshteinRatioFeature(RatioFeature):
-    def __init__(self, *args, **kwargs):
-        super().__init__(self.get_levenshtein_ratio, *args, **kwargs)
-
-    def get_levenshtein_ratio(self, complex_sentence, simple_sentence):
-        return round(Levenshtein.ratio(complex_sentence, simple_sentence))
-
-
-class WordRankRatioFeature(RatioFeature):
-    def __init__(self, *args, **kwargs):
-        super().__init__(self.get_word_rank_ratio, *args, **kwargs)
-
-    def get_word_rank_ratio(self, complex_sentence, simple_sentence):
-        return round(min(safe_division(self.get_lexical_complexity_score(simple_sentence),
-                                       self.get_lexical_complexity_score(complex_sentence)), 2))
-
-    def get_lexical_complexity_score(self, sentence):
-        words = tokenize(remove_stopwords(remove_punctuation(sentence)))
-        words = [word for word in words if word in get_word2rank()]
-        if len(words) == 0:
-            return np.log(1 + len(get_word2rank()))
-        return np.quantile([self.get_rank(word) for word in words], 0.75)
-
-    @lru_cache(maxsize=5000)
-    def get_rank(self, word):
-        rank = get_word2rank().get(word, len(get_word2rank()))
-        return np.log(1 + rank)
-
+# class WordRatioFeature(RatioFeature):
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(self.get_word_length_ratio, *args, **kwargs)
+#
+#     def get_word_length_ratio(self, complex_sentence, simple_sentence):
+#         return round(safe_division(len(tokenize(simple_sentence)), len(tokenize(complex_sentence))))
+#
+#
+# class CharRatioFeature(RatioFeature):
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(self.get_char_length_ratio, *args, **kwargs)
+#
+#     def get_char_length_ratio(self, complex_sentence, simple_sentence):
+#         return round(safe_division(len(simple_sentence), len(complex_sentence)))
+#
+#
+# class LevenshteinRatioFeature(RatioFeature):
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(self.get_levenshtein_ratio, *args, **kwargs)
+#
+#     def get_levenshtein_ratio(self, complex_sentence, simple_sentence):
+#         return round(Levenshtein.ratio(complex_sentence, simple_sentence))
+#
+#
+# class WordRankRatioFeature(RatioFeature):
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(self.get_word_rank_ratio, *args, **kwargs)
+#
+#     def get_word_rank_ratio(self, complex_sentence, simple_sentence):
+#         return round(min(safe_division(self.get_lexical_complexity_score(simple_sentence),
+#                                        self.get_lexical_complexity_score(complex_sentence)), 2))
+#
+#     def get_lexical_complexity_score(self, sentence):
+#         words = tokenize(remove_stopwords(remove_punctuation(sentence)))
+#         words = [word for word in words if word in get_word2rank()]
+#         if len(words) == 0:
+#             return np.log(1 + len(get_word2rank()))
+#         return np.quantile([self.get_rank(word) for word in words], 0.75)
+#
+#     @lru_cache(maxsize=5000)
+#     def get_rank(self, word):
+#         rank = get_word2rank().get(word, len(get_word2rank()))
+#         return np.log(1 + rank)
+#
 
 class DependencyTreeDepthRatioFeature(RatioFeature):
     def __init__(self, *args, **kwargs):
@@ -366,7 +366,8 @@ class Preprocessor:
 
     def preprocess_dataset(self, dataset):
         # download_requirements()
-        self.preprocessed_data_dir = PROCESSED_DATA_DIR / self.hash / dataset
+        # self.preprocessed_data_dir = PROCESSED_DATA_DIR / self.hash / dataset
+        self.preprocessed_data_dir = PROCESSED_DATA_DIR / dataset
         self.preprocessed_data_dir.mkdir(parents=True, exist_ok=True)
         save_preprocessor(self)
         print(f'Preprocessing dataset: {dataset}')
@@ -382,10 +383,10 @@ class Preprocessor:
                 continue
 
             print(f'Prepocessing files: {complex_filepath.name} {simple_filepath.name}')
-            processed_complex_sentences = self.encode_file_pair(complex_filepath, simple_filepath)
-
-            write_lines(processed_complex_sentences, complex_output_filepath)
-            shutil.copy(simple_filepath, simple_output_filepath)
+            # processed_complex_sentences = self.encode_file_pair(complex_filepath, simple_filepath)
+            #
+            # write_lines(processed_complex_sentences, complex_output_filepath)
+            # shutil.copy(simple_filepath, simple_output_filepath)
 
         print(f'Preprocessing dataset "{dataset}" is finished.')
         return self.preprocessed_data_dir
@@ -393,11 +394,10 @@ class Preprocessor:
 
 if __name__ == '__main__':
     features_kwargs = {
-        # 'WordRatioFeature': {'target_ratio': 0.8},
-        'CharRatioFeature': {'target_ratio': 0.8},
-        'LevenshteinRatioFeature': {'target_ratio': 0.8},
-        'WordRankRatioFeature': {'target_ratio': 0.8},
-        'DependencyTreeDepthRatioFeature': {'target_ratio': 0.8}
+        'DependencyTreeDepthRatioFeature': {'target_ratio': 0.1},
+        'DependencyTreeLengthRatioFeature': {'target_ratio': 0.1},
+        'DiffWordRatioFeature': {'target_ratio': 0.1},
+        'WordCountRatioFeature': {'target_ratio': 0.1}
     }
     # features_kwargs = {}
     preprocessor = Preprocessor(features_kwargs)
