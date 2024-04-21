@@ -1,15 +1,19 @@
-/experiments/
-/lightning_logs/
+# /experiments/
+# /lightning_logs/
 /resources/DUMPS/
 .idea
 #/resources
 /resources/processed_data/26ebb6aa762eac859c7b417fbb503eb7
-/results
+#/results
 /scripts/lightning_logs
 /scripts/wandb
-/outputs
+#/outputs
 /others
 
+
+####### Models ######
+*.ckpt
+*.bin
 
 .python-version
 *.pyc
