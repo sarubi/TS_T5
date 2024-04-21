@@ -361,7 +361,8 @@ def train(train_args):
 
     train_params = dict(
         accumulate_grad_batches=args.gradient_accumulation_steps,
-        gpus=args.n_gpu,
+        # gpus=args.n_gpu,
+        gpus=[3],
         max_epochs=args.num_train_epochs,
         # early_stop_callback=False,
         precision=16 if args.fp_16 else 32,
