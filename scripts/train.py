@@ -10,7 +10,7 @@ from source.resources import get_experiment_dir, WIKILARGE_DATASET
 import torch
 import os
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '3'  # Use the first GPU
+# os.environ['CUDA_VISIBLE_DEVICES'] = '3'  # Use the first GPU
 
 dataset = WIKILARGE_DATASET
 args_dict = dict(
