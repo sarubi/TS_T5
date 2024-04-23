@@ -174,6 +174,7 @@ class RatioFeature:
         return f'{self.name}_{self.feature_extractor(complex_sentence, simple_sentence)}', simple_sentence
 
     def decode_sentence(self, encoded_sentence):
+        # todo I guess.
         return encoded_sentence
 
     @property
@@ -402,7 +403,7 @@ class Preprocessor:
         # self.preprocessed_data_dir = PROCESSED_DATA_DIR / self.hash / dataset
         self.preprocessed_data_dir = PROCESSED_DATA_DIR / dataset
         self.preprocessed_data_dir.mkdir(parents=True, exist_ok=True)
-        save_preprocessor(self)
+        save_preprocessor(self, dataset)
         print(f'Preprocessing dataset: {dataset}')
 
         for phase in PHASES:

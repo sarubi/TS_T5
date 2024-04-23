@@ -55,7 +55,8 @@ def load_model(model_dirname=None):
 
         if (model_dir / 'pytorch_model.bin').exists():
             model = T5ForConditionalGeneration.from_pretrained(model_dir)
-            tokenizer = T5TokenizerFast.from_pretrained(params['tokenizer_name_or_path'])
+            # tokenizer = T5TokenizerFast.from_pretrained(params['tokenizer_name_or_path'])
+            tokenizer = T5TokenizerFast.from_pretrained('t5-base')
         else:
             checkpoints = list(model_dir.glob('checkpoint*'))
             best_checkpoint = sorted(checkpoints, reverse=True)[0] 
@@ -70,11 +71,12 @@ def load_model(model_dirname=None):
         model = model.to(device)
 
 
-def generate(sentence, preprocessor):
+def generate(sentence): #preprocessor
     # if not torch.cuda.is_available():
     #     print("Simplifying: ", sentence)
-    sentence = preprocessor.encode_sentence(sentence)
+    # sentence = preprocessor.encode_sentence(sentence)
     text = "simplify: " + sentence
+    print(f"Method: evaluate:generate Inference_input_text: \t{text}")
     encoding = tokenizer(text, max_length=max_len,
                                      padding='max_length',
                                      truncation=True,
@@ -171,7 +173,7 @@ def evaluate_on(dataset, features_kwargs, phase, model_dirname=None):
 
 def simplify_file(complex_filepath, output_filepath, features_kwargs, model_dirname=None, post_processing=True):
     load_model(model_dirname)
-    preprocessor = Preprocessor(features_kwargs)
+    # preprocessor = Preprocessor(features_kwargs)
     
     total_lines = count_line(complex_filepath)
     print(complex_filepath)
@@ -180,8 +182,9 @@ def simplify_file(complex_filepath, output_filepath, features_kwargs, model_dirn
     output_file = Path(output_filepath).open("w")
 
     for n_line, complex_sent in enumerate(yield_lines(complex_filepath), start=1):
-        output_sents = generate(complex_sent, preprocessor)
-        print(f"{n_line+1}/{total_lines}", " : ", output_sents)
+        output_sents = generate(complex_sent) #preprocessor
+        # print(f"{n_line+1}/{total_lines}", " : Input: ", complex_sent)
+        print(f"{n_line+1}/{total_lines}", " : Hyp/Outputs:\t", output_sents)
         if output_sents:
             output_file.write(output_sents[0] + "\n")
         else:

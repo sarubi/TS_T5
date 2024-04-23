@@ -1,0 +1,20 @@
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+/nethome/sarubi/softwares_installed/miniconda3/envs/ts_t5_ft/lib/python3.7/site-packages/pytorch_lightning/callbacks/model_checkpoint.py:611: UserWarning: Checkpoint directory /nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/experiments/exp_1713803608466002 exists and is not empty.
+  rank_zero_warn(f"Checkpoint directory {dirpath} exists and is not empty.")
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [3]
+
+  | Name  | Type                       | Params
+-----------------------------------------------------
+0 | model | T5ForConditionalGeneration | 222 M
+-----------------------------------------------------
+222 M     Trainable params
+0         Non-trainable params
+222 M     Total params
+891.614   Total estimated model params size (MB)
+Epoch 0, global step 13629: 'val_loss' reached 1.04237 (best 1.04237), saving model to '/nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/experiments/exp_1713803608466002/checkpoint-epoch=0.ckpt' as top 5
+Epoch 1, global step 27258: 'val_loss' reached 1.01427 (best 1.01427), saving model to '/nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/experiments/exp_1713803608466002/checkpoint-epoch=1.ckpt' as top 5
+Epoch 2, global step 40887: 'val_loss' reached 0.97798 (best 0.97798), saving model to '/nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/experiments/exp_1713803608466002/checkpoint-epoch=2.ckpt' as top 5
+Epoch 3, global step 54516: 'val_loss' reached 0.97550 (best 0.97550), saving model to '/nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/experiments/exp_1713803608466002/checkpoint-epoch=3.ckpt' as top 5
+Epoch 4, global step 68145: 'val_loss' reached 0.97096 (best 0.97096), saving model to '/nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/experiments/exp_1713803608466002/checkpoint-epoch=4.ckpt' as top 5
+(ts_t5_ft) [sarubi@tony-2 TS_T5]$

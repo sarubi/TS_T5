@@ -134,17 +134,25 @@ def log_params(filepath, kwargs):
     json.dump(kwargs_str, filepath.open('w'), indent=4)
 
 
-def save_preprocessor(preprocessor):
-    DUMPS_DIR.mkdir(parents=True, exist_ok=True)
-    PREPROCESSOR_DUMP_FILE = DUMPS_DIR / 'preprocessor.pickle'
+def save_preprocessor(preprocessor, dataset):
+    # DUMPS_DIR.mkdir(parents=True, exist_ok=True)
+    # PREPROCESSOR_DUMP_FILE = DUMPS_DIR / 'preprocessor.pickle'
+
+    save_preprocessor_pickle_path = DUMPS_DIR / dataset
+    save_preprocessor_pickle_path.mkdir(parents=True, exist_ok=True)
+    PREPROCESSOR_DUMP_FILE = save_preprocessor_pickle_path / 'preprocessor.pickle'
     dump(preprocessor, PREPROCESSOR_DUMP_FILE)
 
 
-def load_preprocessor():
-    PREPROCESSOR_DUMP_FILE = DUMPS_DIR / 'preprocessor.pickle'
+def load_preprocessor(dataset):
+    PREPROCESSOR_DUMP_FILE = DUMPS_DIR / dataset / 'preprocessor.pickle'
+    print(f"Method: load_preprocessor:- PREPROCESSOR_DUMP_FILE path=\t{PREPROCESSOR_DUMP_FILE}")
+    # PREPROCESSOR_DUMP_FILE = DUMPS_DIR / 'preprocessor.pickle'
     if PREPROCESSOR_DUMP_FILE.exists():
+        print(f"Method: load_preprocessor:- PREPROCESSOR_DUMP_FILE exists and loading it.")
         return load_dump(PREPROCESSOR_DUMP_FILE)
     else:
+        print(f"Method: load_preprocessor:- PREPROCESSOR_DUMP_FILE NOT exists.")
         return None
 
 

@@ -13,6 +13,7 @@ import random
 import nltk
 from source.resources import NEWSELA_DATASET, get_data_filepath, WIKILARGE_DATASET, TURKCORPUS_DATASET, \
     WIKILARGE_WIKIAUTO_DATASET
+import re
 
 nltk.download('punkt')
 
@@ -28,6 +29,10 @@ from transformers import (
     get_linear_schedule_with_warmup, AutoConfig, AutoModel
 )
 
+# Trainloader directly load from preprocssed file
+# Valid loader initally load original default dataset, instead of preprocessed one. then in valid generation, they add ratios dynamically.
+# I changed to use preprocessd dataset as default so that ratios are already included.
+
 class T5FineTuner(pl.LightningModule):
     def __init__(self, model_name, learning_rate, adam_epsilon, custom_loss, weight_decay, dataset,
                  train_batch_size, valid_batch_size, train_sample_size, valid_sample_size, max_seq_length,
@@ -38,7 +43,7 @@ class T5FineTuner(pl.LightningModule):
         self.model = T5ForConditionalGeneration.from_pretrained(self.hparams.model_name)
         self.tokenizer = T5TokenizerFast.from_pretrained(self.hparams.model_name)
         self.model = self.model.to(self.device)
-        self.preprocessor = load_preprocessor()
+        self.preprocessor = load_preprocessor(dataset)
 
 
     def is_logger(self):
@@ -57,8 +62,11 @@ class T5FineTuner(pl.LightningModule):
         return outputs
 
     def generate(self, sentence):
-        sentence = self.preprocessor.encode_sentence(sentence)
+        print(f"Method: T5FineTuner:generate:- given_input_sentence: \t{sentence}")
+        # sentence = self.preprocessor.encode_sentence(sentence)
+        # print(f"generate: preprocessed_sentence: {sentence}")
         text = "simplify: " + sentence
+        print(f"Method: T5FineTuner:generate:- final_text_sentence:\t{sentence}")
 
         encoding = self.tokenizer(
             text,
@@ -88,7 +96,7 @@ class T5FineTuner(pl.LightningModule):
         # Huggingface’s loss functions are defined to exclude the ID -100 during loss calculations. Therefore, we need to convert all padding token IDs in labels to -100.
         labels[labels[:, :] == self.tokenizer.pad_token_id] = -100
 
-        self.opt.zero_grad()
+        # self.opt.zero_grad()
         outputs = self(
             input_ids=batch["source_ids"],
             attention_mask=batch["source_mask"],
@@ -97,6 +105,7 @@ class T5FineTuner(pl.LightningModule):
         )
 
         if self.hparams.custom_loss:
+            print(f"custom_loss is given: self.hparams.custom_loss: {self.hparams.custom_loss}")
             loss = outputs.loss
             complexity_score = random.randint(0, 100) * 0.01
             # complexity_score = self._custom_step(outputs['logits'])
@@ -120,6 +129,22 @@ class T5FineTuner(pl.LightningModule):
         # self.logger.experiment.add_scalars('loss', logs, global_step=self.global_step)
         # return {"loss": loss, "log": logs}
 
+    def _step(self, batch):
+        # https://github.com/patil-suraj/exploring-T5/blob/master/t5_fine_tuning.ipynb
+        labels = batch["target_ids"]
+        labels[labels[:, :] == self.tokenizer.pad_token_id] = -100
+
+        outputs = self(
+            input_ids=batch["source_ids"],
+            attention_mask=batch["source_mask"],
+            labels=labels,
+            decoder_attention_mask=batch['target_mask']
+        )
+
+        loss = outputs.loss
+
+        return loss
+
     def validation_step(self, batch, batch_idx):
         loss = self.sari_validation_step(batch)
         # loss = self._step(batch)
@@ -130,10 +155,19 @@ class T5FineTuner(pl.LightningModule):
         self.log('val_loss', loss, batch_size=self.hparams.valid_batch_size)
         return torch.tensor(loss, dtype=float)
 
+        # loss = self._step(batch)
+        # print("Val_loss", loss)
+        # self.log('val_loss', loss, batch_size=self.hparams.valid_batch_size)
+        # return loss
+
     def sari_validation_step(self, batch):
         def generate(sentence):
-            sentence = self.preprocessor.encode_sentence(sentence)
+            print(f"Method: sari_validation_step:generate:- given_input_sentence:\t{sentence}")
+            # sentence = self.preprocessor.encode_sentence(sentence)
+            # print(f"Method: sari_validation_step:generate:- preprocessed_sentence: {sentence}")
             text = "simplify: " + sentence
+            print(f"Method: sari_validation_step:generate:- final_text_sentence:\t{text}")
+
             # print("Simplifying: ", text)
 
             encoding = self.tokenizer(
@@ -165,12 +199,27 @@ class T5FineTuner(pl.LightningModule):
             return sent
             # return final_outputs[0]
 
+        def extract_src_sentence_from_ratio_prefix(text):
+            # This regex pattern looks for any sequence that starts with capital letters followed by underscore,
+            # then any sequence of digits or dots, and a space, repeating multiple times before the actual sentence starts.
+            pattern = r"^(?:[A-Z]+_[0-9\.]+\s)+"
+            # Using re.sub to replace the found pattern with an empty string, essentially removing it
+            cleaned_text = re.sub(pattern, '', text)
+            return cleaned_text.strip()
+
         pred_sents = []
+        src_sents_wo_ratios = []
         for source in batch["source"]:
             pred_sent = generate(source)
             pred_sents.append(pred_sent)
+            src_sents_wo_ratios.append(extract_src_sentence_from_ratio_prefix(source))
 
-        score = corpus_sari(batch["source"], pred_sents, batch["targets"])
+        print(f'batch["source"]:\t{batch["source"]}')
+        print(f'[src_sents_wo_ratios]:\t{src_sents_wo_ratios}')
+        print(f'batch["targets"]:\t{batch["targets"]}')
+        print(f'[pred_sents]:\t{pred_sents}')
+        # score = corpus_sari(batch["source"], pred_sents, batch["targets"])
+        score = corpus_sari(src_sents_wo_ratios, pred_sents, batch["targets"])
         print("Sari score: ", score)
 
         return 1 - score / 100
@@ -220,13 +269,17 @@ class T5FineTuner(pl.LightningModule):
                    * float(self.hparams.num_train_epochs)
                    )
         scheduler = get_linear_schedule_with_warmup(
-            self.opt, num_warmup_steps=self.hparams.warmup_steps, num_training_steps=t_total
+            self.opt, num_warmup_steps=self.hparams.warmup_steps, num_training_steps=t_total #20 t_total
         )
         self.lr_scheduler = scheduler
         return dataloader
 
     def val_dataloader(self):
-        val_dataset = ValDataset(dataset=self.hparams.dataset,
+        # val_dataset = ValDataset(dataset=self.hparams.dataset,
+        #                          tokenizer=self.tokenizer,
+        #                          max_len=self.hparams.max_seq_length,
+        #                          sample_size=self.hparams.valid_sample_size)
+        val_dataset = ValDataset_as_TrainDataset(dataset=self.hparams.dataset,
                                  tokenizer=self.tokenizer,
                                  max_len=self.hparams.max_seq_length,
                                  sample_size=self.hparams.valid_sample_size)
@@ -266,8 +319,8 @@ class LoggingCallback(pl.Callback):
 class TrainDataset(Dataset):
     def __init__(self, dataset, tokenizer, max_len=256, sample_size=1):
         self.sample_size = sample_size
-        # print("init TrainDataset ...")
-        preprocessor = load_preprocessor()
+        print("init TrainDataset ...")
+        preprocessor = load_preprocessor(dataset)
         self.source_filepath = preprocessor.get_preprocessed_filepath(dataset, 'train', 'complex')
         self.target_filepath = preprocessor.get_preprocessed_filepath(dataset, 'train', 'simple')
 
@@ -277,7 +330,58 @@ class TrainDataset(Dataset):
         self._load_data()
 
     def _load_data(self):
+        print(f'Loading Train source_filepath: {self.source_filepath}')
         self.inputs = read_lines(self.source_filepath)
+        print(f'Loading Train target_filepath: {self.target_filepath}')
+        self.targets = read_lines(self.target_filepath)
+
+    def __len__(self):
+        return int(len(self.inputs) * self.sample_size)
+
+    def __getitem__(self, index):
+        source = "simplify: " + self.inputs[index]
+        target = self.targets[index]
+
+        tokenized_inputs = self.tokenizer(
+            [source],
+            truncation=True,
+            max_length=self.max_len,
+            padding='max_length',
+            return_tensors="pt"
+        )
+        tokenized_targets = self.tokenizer(
+            [target],
+            truncation=True,
+            max_length=self.max_len,
+            padding='max_length',
+            return_tensors="pt"
+        )
+        source_ids = tokenized_inputs["input_ids"].squeeze()
+        target_ids = tokenized_targets["input_ids"].squeeze()
+
+        src_mask = tokenized_inputs["attention_mask"].squeeze()  # might need to squeeze
+        target_mask = tokenized_targets["attention_mask"].squeeze()  # might need to squeeze
+
+        return {"source_ids": source_ids, "source_mask": src_mask, "target_ids": target_ids, "target_mask": target_mask,
+                'sources': self.inputs[index], 'targets': [self.targets[index]]}
+
+class ValDataset_as_TrainDataset(Dataset):
+    def __init__(self, dataset, tokenizer, max_len=256, sample_size=1):
+        self.sample_size = sample_size
+        print("init ValDataset ...")
+        preprocessor = load_preprocessor(dataset)
+        self.source_filepath = preprocessor.get_preprocessed_filepath(dataset, 'valid', 'complex')
+        self.target_filepath = preprocessor.get_preprocessed_filepath(dataset, 'valid', 'simple')
+
+        self.max_len = max_len
+        self.tokenizer = tokenizer
+
+        self._load_data()
+
+    def _load_data(self):
+        print(f'Loading Val source_filepath: {self.source_filepath}')
+        self.inputs = read_lines(self.source_filepath)
+        print(f'Loading Val target_filepath: {self.target_filepath}')
         self.targets = read_lines(self.target_filepath)
 
     def __len__(self):
@@ -314,12 +418,18 @@ class TrainDataset(Dataset):
 class ValDataset(Dataset):
     def __init__(self, dataset, tokenizer, max_len=256, sample_size=1):
         self.sample_size = sample_size
-        self.source_filepath = get_data_filepath(dataset, 'valid', 'complex')
-        if dataset == NEWSELA_DATASET:
-            self.target_filepaths = [get_data_filepath(dataset, 'valid', 'simple')]
+        # self.source_filepath = get_data_filepath(dataset, 'valid', 'complex')
+        # if dataset == NEWSELA_DATASET:
+        #     self.target_filepaths = [get_data_filepath(dataset, 'valid', 'simple')]
+        #
+        # else:  # TURKCORPUS_DATASET as default
+        #     self.target_filepaths = [get_data_filepath(TURKCORPUS_DATASET, 'valid', 'simple.turk', i) for i in range(8)]
 
-        else:  # TURKCORPUS_DATASET as default
-            self.target_filepaths = [get_data_filepath(TURKCORPUS_DATASET, 'valid', 'simple.turk', i) for i in range(8)]
+        preprocessor = load_preprocessor(dataset)
+        self.source_filepath = preprocessor.get_preprocessed_filepath(dataset, 'valid', 'complex')
+        print(f'Loading ValDataset source_filepath: {self.source_filepath}')
+        self.target_filepaths = [preprocessor.get_preprocessed_filepath(dataset, 'valid', 'simple')]
+        print(f'Loading ValDataset target_filepaths: {self.target_filepaths}')
 
         self.max_len = max_len
         self.tokenizer = tokenizer
@@ -363,6 +473,8 @@ def train(train_args):
         accumulate_grad_batches=args.gradient_accumulation_steps,
         gpus=args.n_gpu,
         max_epochs=args.num_train_epochs,
+        # max_steps=20,
+        # val_check_interval=10,
         # early_stop_callback=False,
         precision=16 if args.fp_16 else 32,
         amp_level=args.opt_level,
@@ -388,5 +500,6 @@ def train(train_args):
 
     print("Saving model")
     model.model.save_pretrained(args.output_dir)
+    model.tokenizer.save_pretrained(args.output_dir)
 
     print("Saved model")
