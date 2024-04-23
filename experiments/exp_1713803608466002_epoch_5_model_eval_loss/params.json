@@ -1,0 +1,23 @@
+{
+    "model_name": "t5-base",
+    "max_seq_length": "256",
+    "learning_rate": "0.0003",
+    "weight_decay": "0.1",
+    "adam_epsilon": "1e-08",
+    "warmup_steps": "5",
+    "train_batch_size": "16",
+    "valid_batch_size": "16",
+    "num_train_epochs": "5",
+    "custom_loss": "False",
+    "gradient_accumulation_steps": "1",
+    "n_gpu": "1",
+    "fp_16": "False",
+    "opt_level": "O1",
+    "max_grad_norm": "1.0",
+    "seed": "12",
+    "nb_sanity_val_steps": "0",
+    "train_sample_size": "1",
+    "valid_sample_size": "1",
+    "features_kwargs": "{'DependencyTreeDepthRatioFeature': {'target_ratio': 0.1}, 'DependencyTreeLengthRatioFeature': {'target_ratio': 0.1}, 'DifficultWordsRatioFeature': {'target_ratio': 0.1}, 'WordCountRatioFeature': {'target_ratio': 0.1}}",
+    "output_dir": "/nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/experiments/exp_1713803608466002"
+}
