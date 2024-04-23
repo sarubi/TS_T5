@@ -2,6 +2,10 @@ Evaluate dataset: processed_data/wikilarge.val.maxdepdepth_above_6.v2_wo_line_46
 Load model /nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/experiments/exp_1713803608466002_epoch_5_model_eval_loss
 loading model...
 Model dir:  /nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/experiments/exp_1713803608466002_epoch_5_model_eval_loss
+Loading checkpoint..
+check_point: /nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/experiments/exp_1713803608466002_epoch_5_model_eval_loss/checkpoint-epoch=4.ckpt
+Method: load_preprocessor:- PREPROCESSOR_DUMP_FILE path=	/nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/resources/DUMPS/wikilarge/preprocessor.pickle
+Method: load_preprocessor:- PREPROCESSOR_DUMP_FILE exists and loading it.
 /nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/LLM_based_control_rewrite/experiments/data_filtered_regression_model/T5_ft/f4_maxdepdepth_maxdeplength_diffwords_wc/gold_ratios-filtered_wiki.maxdepdepth_above_6.v2_wo_line_46.valid-t5ft-exp_1713803608466002_epoch_5_model_eval_loss/maxdepdepth_-1_maxdeplength_-1_diffwordscount_-1_avgwordcount_-1_length_-1_leven_-1/input.processed.txt
 input.processed
 Method: evaluate:generate Inference_input_text: 	simplify: DTD_1.12 DTL_0.78 DW_1.00 WC_0.71  Quercamps is a commune in the Pas-de-Calais department in the Nord-Pas-de-Calais region of France.
@@ -409,6 +413,10 @@ Evaluate dataset: processed_data/wikilarge.val.maxdepdepth_above_6.v2_wo_line_46
 Load model /nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/experiments/exp_1713803608466002_epoch_5_model_eval_loss
 loading model...
 Model dir:  /nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/experiments/exp_1713803608466002_epoch_5_model_eval_loss
+Loading checkpoint..
+check_point: /nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/experiments/exp_1713803608466002_epoch_5_model_eval_loss/checkpoint-epoch=4.ckpt
+Method: load_preprocessor:- PREPROCESSOR_DUMP_FILE path=	/nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/resources/DUMPS/wikilarge/preprocessor.pickle
+Method: load_preprocessor:- PREPROCESSOR_DUMP_FILE exists and loading it.
 /nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/LLM_based_control_rewrite/experiments/data_filtered_regression_model/T5_ft/f4_maxdepdepth_maxdeplength_diffwords_wc/lr_ratios-filtered_wiki.maxdepdepth_above_6.v2_wo_line_46.valid-t5ft-exp_1713803608466002_epoch_5_model_eval_loss/maxdepdepth_-1_maxdeplength_-1_diffwordscount_-1_avgwordcount_-1_length_-1_leven_-1/input.processed.txt
 input.processed
 Method: evaluate:generate Inference_input_text: 	simplify: DTD_0.69 DTL_0.79 DW_0.76 WC_0.82  Quercamps is a commune in the Pas-de-Calais department in the Nord-Pas-de-Calais region of France.
@@ -816,6 +824,10 @@ Evaluate dataset: processed_data/wikilarge.val.maxdepdepth_above_6.v2_wo_line_46
 Load model /nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/experiments/exp_1713803608466002_epoch_5_model_eval_loss
 loading model...
 Model dir:  /nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/experiments/exp_1713803608466002_epoch_5_model_eval_loss
+Loading checkpoint..
+check_point: /nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/experiments/exp_1713803608466002_epoch_5_model_eval_loss/checkpoint-epoch=4.ckpt
+Method: load_preprocessor:- PREPROCESSOR_DUMP_FILE path=	/nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/resources/DUMPS/wikilarge/preprocessor.pickle
+Method: load_preprocessor:- PREPROCESSOR_DUMP_FILE exists and loading it.
 /nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/LLM_based_control_rewrite/experiments/data_filtered_regression_model/T5_ft/f4_maxdepdepth_maxdeplength_diffwords_wc/roberta_ratios-filtered_wiki.maxdepdepth_above_6.v2_wo_line_46.valid-t5ft-exp_1713803608466002_epoch_5_model_eval_loss/maxdepdepth_-1_maxdeplength_-1_diffwordscount_-1_avgwordcount_-1_length_-1_leven_-1/input.processed.txt
 input.processed
 Method: evaluate:generate Inference_input_text: 	simplify: DTD_0.99 DTL_0.74 DW_0.77 WC_0.93  Quercamps is a commune in the Pas-de-Calais department in the Nord-Pas-de-Calais region of France.
@@ -1223,6 +1235,10 @@ Evaluate dataset: processed_data/wikilarge.val.maxdepdepth_above_6.v2_wo_line_46
 Load model /nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/experiments/exp_1713803608466002_epoch_5_model_eval_loss
 loading model...
 Model dir:  /nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/experiments/exp_1713803608466002_epoch_5_model_eval_loss
+Loading checkpoint..
+check_point: /nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/experiments/exp_1713803608466002_epoch_5_model_eval_loss/checkpoint-epoch=4.ckpt
+Method: load_preprocessor:- PREPROCESSOR_DUMP_FILE path=	/nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/resources/DUMPS/wikilarge/preprocessor.pickle
+Method: load_preprocessor:- PREPROCESSOR_DUMP_FILE exists and loading it.
 /nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/LLM_based_control_rewrite/experiments/data_filtered_regression_model/T5_ft/f4_maxdepdepth_maxdeplength_diffwords_wc/fixed_ratios-filtered_wiki.maxdepdepth_above_6.v2_wo_line_46.valid-t5ft-exp_1713803608466002_epoch_5_model_eval_loss/maxdepdepth_-1_maxdeplength_-1_diffwordscount_-1_avgwordcount_-1_length_-1_leven_-1/input.processed.txt
 input.processed
 Method: evaluate:generate Inference_input_text: 	simplify: DTD_0.83 DTL_0.80 DW_0.73 WC_0.76  Quercamps is a commune in the Pas-de-Calais department in the Nord-Pas-de-Calais region of France.
