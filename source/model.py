@@ -62,11 +62,11 @@ class T5FineTuner(pl.LightningModule):
         return outputs
 
     def generate(self, sentence):
-        print(f"Method: T5FineTuner:generate:- given_input_sentence: \t{sentence}")
+        print(f"***** Method: T5FineTuner:generate:- given_input_sentence: \t{sentence}")
         # sentence = self.preprocessor.encode_sentence(sentence)
         # print(f"generate: preprocessed_sentence: {sentence}")
         text = "simplify: " + sentence
-        print(f"Method: T5FineTuner:generate:- final_text_sentence:\t{sentence}")
+        print(f"***** Method: T5FineTuner:generate:- final_text_sentence:\t{sentence}")
 
         encoding = self.tokenizer(
             text,
@@ -146,19 +146,19 @@ class T5FineTuner(pl.LightningModule):
         return loss
 
     def validation_step(self, batch, batch_idx):
-        loss = self.sari_validation_step(batch)
-        # loss = self._step(batch)
-        print("Val_loss", loss)
-        logs = {"val_loss": loss}
-        # self.logger.experiment.add_scalars('loss', logs, global_step=self.global_step)
-        # return {"val_loss": torch.tensor(loss)}
-        self.log('val_loss', loss, batch_size=self.hparams.valid_batch_size)
-        return torch.tensor(loss, dtype=float)
-
-        # loss = self._step(batch)
+        # loss = self.sari_validation_step(batch)
+        # # loss = self._step(batch)
         # print("Val_loss", loss)
+        # logs = {"val_loss": loss}
+        # # self.logger.experiment.add_scalars('loss', logs, global_step=self.global_step)
+        # # return {"val_loss": torch.tensor(loss)}
         # self.log('val_loss', loss, batch_size=self.hparams.valid_batch_size)
-        # return loss
+        # return torch.tensor(loss, dtype=float)
+
+        loss = self._step(batch)
+        print("Val_loss", loss)
+        self.log('val_loss', loss, batch_size=self.hparams.valid_batch_size)
+        return loss
 
     def sari_validation_step(self, batch):
         def generate(sentence):
@@ -425,6 +425,13 @@ class ValDataset(Dataset):
         # else:  # TURKCORPUS_DATASET as default
         #     self.target_filepaths = [get_data_filepath(TURKCORPUS_DATASET, 'valid', 'simple.turk', i) for i in range(8)]
 
+        # # Load row valid files, and add ratios dynamically.
+        # self.source_filepath = get_data_filepath(dataset, 'valid', 'complex')
+        # print(f'Loading ValDataset source_filepath: {self.source_filepath}')
+        # self.target_filepaths = [get_data_filepath(dataset, 'valid', 'simple')]
+        # print(f'Loading ValDataset target_filepaths: {self.target_filepaths}')
+
+        # load with processed valid files with gold ratio.
         preprocessor = load_preprocessor(dataset)
         self.source_filepath = preprocessor.get_preprocessed_filepath(dataset, 'valid', 'complex')
         print(f'Loading ValDataset source_filepath: {self.source_filepath}')

@@ -53,17 +53,18 @@ def load_model(model_dirname=None):
         max_len = int(params['max_seq_length'])
         # max_len = 80
 
-        if (model_dir / 'pytorch_model.bin').exists():
-            model = T5ForConditionalGeneration.from_pretrained(model_dir)
-            # tokenizer = T5TokenizerFast.from_pretrained(params['tokenizer_name_or_path'])
-            tokenizer = T5TokenizerFast.from_pretrained('t5-base')
-        else:
-            checkpoints = list(model_dir.glob('checkpoint*'))
-            best_checkpoint = sorted(checkpoints, reverse=True)[0] 
-            print('check_point:', best_checkpoint)
-            T5_model = T5FineTuner.load_from_checkpoint(checkpoint_path=best_checkpoint)
-            model = T5_model.model
-            tokenizer = T5_model.tokenizer    
+        # if (model_dir / 'pytorch_model.bin').exists():
+        #     model = T5ForConditionalGeneration.from_pretrained(model_dir)
+        #     # tokenizer = T5TokenizerFast.from_pretrained(params['tokenizer_name_or_path'])
+        #     tokenizer = T5TokenizerFast.from_pretrained('t5-base')
+        # else:
+        print("Loading checkpoint..")
+        checkpoints = list(model_dir.glob('checkpoint*'))
+        best_checkpoint = sorted(checkpoints, reverse=True)[0]
+        print('check_point:', best_checkpoint)
+        T5_model = T5FineTuner.load_from_checkpoint(checkpoint_path=best_checkpoint)
+        model = T5_model.model
+        tokenizer = T5_model.tokenizer
             
         
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")

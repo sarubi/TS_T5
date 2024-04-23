@@ -22,7 +22,7 @@ args_dict = dict(
     warmup_steps=5,
     train_batch_size=16,
     valid_batch_size=16,
-    num_train_epochs=5,
+    num_train_epochs=1,
     # max_steps=20,
     # eval_steps=10,
     custom_loss=False,
@@ -39,10 +39,10 @@ args_dict = dict(
 )
 
 features_kwargs = {
-    'DependencyTreeDepthRatioFeature': {'target_ratio': 0.1},
-    'DependencyTreeLengthRatioFeature': {'target_ratio': 0.1},
-    'DifficultWordsRatioFeature': {'target_ratio': 0.1},
-    'WordCountRatioFeature': {'target_ratio': 0.1}
+    'DependencyTreeDepthRatioFeature': {'target_ratio': 0.8},
+    'DependencyTreeLengthRatioFeature': {'target_ratio': 0.8},
+    'DifficultWordsRatioFeature': {'target_ratio': 0.8},
+    'WordCountRatioFeature': {'target_ratio': 0.8}
 }
 args_dict['features_kwargs'] = features_kwargs
 run_training(args_dict, dataset)
