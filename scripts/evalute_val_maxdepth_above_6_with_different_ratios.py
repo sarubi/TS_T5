@@ -13,7 +13,7 @@ features_kwargs = {
     'WordCountRatioFeature': {'target_ratio': -1}
 }
 
-experiment_name="exp_1713803608466002_epoch_5_model_eval_loss"
+experiment_name="exp_1713887409569235_train_v3_epoch_5_model_eval_loss"
 dataset_base_dir_name=Path("/nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/LLM_based_control_rewrite/experiments/data_filtered_regression_model/T5_ft/f4_maxdepdepth_maxdeplength_diffwords_wc")
 
 datasets_to_evaluate = {
@@ -64,3 +64,4 @@ for dataset_name_key, filepath in datasets_to_evaluate.items():
     print(evaluate_all_metrics(output_dir / 'input.txt', output_filepath, [output_dir / 'gold_ref.txt']))
 
 # CUDA_VISIBLE_DEVICES=3 python scripts/maxdepth_above_6_val_on_different_ratios_evaluate.py > experiments/exp_1713803608466002_epoch_5_model_eval_loss/logs_val_maxdepth_above_6_evaluate_across_all_ratios
+# CUDA_VISIBLE_DEVICES=3 python scripts/evalute_val_maxdepth_above_6_with_different_ratios.py > experiments/exp_1713887409569235_train_v3_epoch_5_model_eval_loss/logs_val_maxdepth_above_6_evaluate_across_all_ratios
