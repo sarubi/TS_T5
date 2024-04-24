@@ -44,7 +44,7 @@ for dataset_name_key, filepath in datasets_to_evaluate.items():
     def copy_first_200_lines(source_path, dest_path):
         with open(source_path, 'r', encoding='utf-8') as source_file:
             with open(dest_path, 'w', encoding='utf-8') as dest_file:
-                for _ in range(200):
+                for _ in range(201):
                     line = source_file.readline()
                     if not line:
                         break
@@ -65,5 +65,5 @@ for dataset_name_key, filepath in datasets_to_evaluate.items():
 
 # CUDA_VISIBLE_DEVICES=3 python scripts/val_v2_only_complex_extracted_from_train_on_different_ratios_evaluate.py > experiments/exp_1713803608466002_epoch_5_model_eval_loss/logs_val_v2_only_complex_extracted_from_train_evaluate_across_all_ratios
 # CUDA_VISIBLE_DEVICES=1 python scripts/evaluate_val_v2_only_complex_extracted_from_train_with_different_ratios.py > experiments/exp_1713887409569235_train_v3_epoch_5_model_eval_loss/logs_val_v2_only_complex_extracted_from_train_evaluate_across_all_ratios
-
+# CUDA_VISIBLE_DEVICES=1 python scripts/evaluate_val_v2_only_complex_extracted_from_train_with_different_ratios.py > experiments/exp_1713887409569235_train_v3_epoch_5_model_eval_loss/logs_val_v2_only_complex_extracted_from_train_evaluate_across_all_ratios_line201
 
