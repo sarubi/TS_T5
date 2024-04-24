@@ -1,0 +1,6 @@
+(ts_t5_ft) [sarubi@tony-2 TS_T5]$
+0         Non-trainable params
+222 M     Total params
+891.614   Total estimated model params size (MB)
+Epoch 0, global step 13555: 'val_loss' reached 1.02070 (best 1.02070), saving model to '/nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/experiments/exp_1713887546542317/checkpoint-epoch=0.ckpt' as top 5
+(ts_t5_ft) [sarubi@tony-2 TS_T5]$

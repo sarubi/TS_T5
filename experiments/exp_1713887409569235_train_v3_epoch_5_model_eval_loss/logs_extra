@@ -1,0 +1,11 @@
+-----------------------------------------------------
+222 M     Trainable params
+0         Non-trainable params
+222 M     Total params
+891.614   Total estimated model params size (MB)
+Epoch 0, global step 13555: 'val_loss' reached 1.05852 (best 1.05852), saving model to '/nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/experiments/exp_1713887409569235/checkpoint-epoch=0.ckpt' as top 5
+Epoch 1, global step 27110: 'val_loss' reached 1.01791 (best 1.01791), saving model to '/nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/experiments/exp_1713887409569235/checkpoint-epoch=1.ckpt' as top 5
+Epoch 2, global step 40665: 'val_loss' reached 1.00115 (best 1.00115), saving model to '/nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/experiments/exp_1713887409569235/checkpoint-epoch=2.ckpt' as top 5
+Epoch 3, global step 54220: 'val_loss' reached 1.00245 (best 1.00115), saving model to '/nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/experiments/exp_1713887409569235/checkpoint-epoch=3.ckpt' as top 5
+Epoch 4, global step 67775: 'val_loss' reached 1.00883 (best 1.00115), saving model to '/nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/experiments/exp_1713887409569235/checkpoint-epoch=4.ckpt' as top 5
+(ts_t5_ft) [sarubi@tony-2 TS_T5]$
