@@ -1,0 +1,305 @@
+Preprocessing dataset: wikilarge
+Preprocessing dataset "wikilarge" is finished.
+{'model_name': 't5-base', 'max_seq_length': 256, 'learning_rate': 0.0003, 'weight_decay': 0.1, 'adam_epsilon': 1e-08, 'warmup_steps': 5, 'train_batch_size': 16, 'valid_batch_size': 16, 'max_steps': 20, 'eval_steps': 10, 'custom_loss': False, 'gradient_accumulation_steps': 1, 'n_gpu': 1, 'fp_16': False, 'opt_level': 'O1', 'max_grad_norm': 1.0, 'seed': 12, 'nb_sanity_val_steps': 0, 'train_sample_size': 1, 'valid_sample_size': 1, 'features_kwargs': {'DependencyTreeDepthRatioFeature': {'target_ratio': 0.8}, 'DependencyTreeLengthRatioFeature': {'target_ratio': 0.8}, 'DifficultWordsRatioFeature': {'target_ratio': 0.8}, 'WordCountRatioFeature': {'target_ratio': 0.8}}, 'output_dir': PosixPath('/nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/experiments/exp_1713887793504219'), 'dataset': 'wikilarge'}
+Initialize model
+Method: load_preprocessor:- PREPROCESSOR_DUMP_FILE path=	/nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/resources/DUMPS/wikilarge/preprocessor.pickle
+Method: load_preprocessor:- PREPROCESSOR_DUMP_FILE exists and loading it.
+ Training model
+init TrainDataset ...
+Method: load_preprocessor:- PREPROCESSOR_DUMP_FILE path=	/nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/resources/DUMPS/wikilarge/preprocessor.pickle
+Method: load_preprocessor:- PREPROCESSOR_DUMP_FILE exists and loading it.
+Loading Train source_filepath: /nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/resources/processed_data/wikilarge/wikilarge.train.complex
+Loading Train target_filepath: /nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/resources/processed_data/wikilarge/wikilarge.train.simple
+init ValDataset ...
+Method: load_preprocessor:- PREPROCESSOR_DUMP_FILE path=	/nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/resources/DUMPS/wikilarge/preprocessor.pickle
+Method: load_preprocessor:- PREPROCESSOR_DUMP_FILE exists and loading it.
+Loading Val source_filepath: /nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/resources/processed_data/wikilarge/wikilarge.valid.complex
+Loading Val target_filepath: /nethome/sarubi/A8/ptm_access_based_ft/TS_T5_myedit/TS_T5/resources/processed_data/wikilarge/wikilarge.valid.simple
+Training: 0it [00:00, ?it/s]Training:   0%|          | 0/75885 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/75885 [00:00<?, ?it/s] Epoch 0:   0%|          | 1/75885 [00:01<24:11:48,  1.15s/it]Epoch 0:   0%|          | 1/75885 [00:01<24:12:26,  1.15s/it]Epoch 0:   0%|          | 1/75885 [00:01<24:20:52,  1.16s/it, loss=1.9, v_num=35, train_loss=1.900]Epoch 0:   0%|          | 2/75885 [00:01<18:45:46,  1.12it/s, loss=1.9, v_num=35, train_loss=1.900]Epoch 0:   0%|          | 2/75885 [00:01<18:46:11,  1.12it/s, loss=1.9, v_num=35, train_loss=1.900]Epoch 0:   0%|          | 2/75885 [00:01<18:50:53,  1.12it/s, loss=2.24, v_num=35, train_loss=2.580]Epoch 0:   0%|          | 3/75885 [00:02<16:56:41,  1.24it/s, loss=2.24, v_num=35, train_loss=2.580]Epoch 0:   0%|          | 3/75885 [00:02<16:56:55,  1.24it/s, loss=2.24, v_num=35, train_loss=2.580]Epoch 0:   0%|          | 3/75885 [00:02<17:00:04,  1.24it/s, loss=2.06, v_num=35, train_loss=1.700]Epoch 0:   0%|          | 4/75885 [00:03<16:02:04,  1.31it/s, loss=2.06, v_num=35, train_loss=1.700]Epoch 0:   0%|          | 4/75885 [00:03<16:02:14,  1.31it/s, loss=2.06, v_num=35, train_loss=1.700]Epoch 0:   0%|          | 4/75885 [00:03<16:04:38,  1.31it/s, loss=2.05, v_num=35, train_loss=2.030]Epoch 0:   0%|          | 5/75885 [00:03<15:29:08,  1.36it/s, loss=2.05, v_num=35, train_loss=2.030]Epoch 0:   0%|          | 5/75885 [00:03<15:29:16,  1.36it/s, loss=2.05, v_num=35, train_loss=2.030]Epoch 0:   0%|          | 5/75885 [00:03<15:31:10,  1.36it/s, loss=2, v_num=35, train_loss=1.810]   Epoch 0:   0%|          | 6/75885 [00:04<15:07:40,  1.39it/s, loss=2, v_num=35, train_loss=1.810]Epoch 0:   0%|          | 6/75885 [00:04<15:07:46,  1.39it/s, loss=2, v_num=35, train_loss=1.810]Epoch 0:   0%|          | 6/75885 [00:04<15:09:13,  1.39it/s, loss=2.06, v_num=35, train_loss=2.350]Epoch 0:   0%|          | 7/75885 [00:04<14:53:35,  1.42it/s, loss=2.06, v_num=35, train_loss=2.350]Epoch 0:   0%|          | 7/75885 [00:04<14:53:42,  1.42it/s, loss=2.06, v_num=35, train_loss=2.350]Epoch 0:   0%|          | 7/75885 [00:04<14:55:01,  1.41it/s, loss=2.02, v_num=35, train_loss=1.770]Epoch 0:   0%|          | 8/75885 [00:05<14:41:46,  1.43it/s, loss=2.02, v_num=35, train_loss=1.770]Epoch 0:   0%|          | 8/75885 [00:05<14:41:51,  1.43it/s, loss=2.02, v_num=35, train_loss=1.770]Epoch 0:   0%|          | 8/75885 [00:05<14:42:58,  1.43it/s, loss=2.04, v_num=35, train_loss=2.190]Epoch 0:   0%|          | 9/75885 [00:06<14:33:17,  1.45it/s, loss=2.04, v_num=35, train_loss=2.190]Epoch 0:   0%|          | 9/75885 [00:06<14:33:25,  1.45it/s, loss=2.04, v_num=35, train_loss=2.190]Epoch 0:   0%|          | 9/75885 [00:06<14:33:50,  1.45it/s, loss=1.94, v_num=35, train_loss=1.130]Epoch 0:   0%|          | 10/75885 [00:06<14:26:06,  1.46it/s, loss=1.94, v_num=35, train_loss=1.130]Epoch 0:   0%|          | 10/75885 [00:06<14:26:10,  1.46it/s, loss=1.94, v_num=35, train_loss=1.130]Epoch 0:   0%|          | 10/75885 [00:06<14:27:07,  1.46it/s, loss=1.94, v_num=35, train_loss=1.920]
+Validation: 0it [00:00, ?it/s][A
+Validation:   0%|          | 0/46 [00:00<?, ?it/s][A
+Validation DataLoader 0:   0%|          | 0/46 [00:00<?, ?it/s][AVal_loss tensor(1.3990, device='cuda:0')
+
+Validation DataLoader 0:   2%|2         | 1/46 [00:00<00:09,  4.81it/s][A
+Validation DataLoader 0:   2%|2         | 1/46 [00:00<00:09,  4.81it/s][AEpoch 0:   0%|          | 11/75885 [00:07<13:50:08,  1.52it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 11/75885 [00:07<13:50:09,  1.52it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.5532, device='cuda:0')
+
+Validation DataLoader 0:   4%|4         | 2/46 [00:00<00:09,  4.87it/s][A
+Validation DataLoader 0:   4%|4         | 2/46 [00:00<00:09,  4.87it/s][AEpoch 0:   0%|          | 12/75885 [00:07<13:02:26,  1.62it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 12/75885 [00:07<13:02:27,  1.62it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.6404, device='cuda:0')
+
+Validation DataLoader 0:   7%|6         | 3/46 [00:00<00:08,  4.93it/s][A
+Validation DataLoader 0:   7%|6         | 3/46 [00:00<00:08,  4.93it/s][AEpoch 0:   0%|          | 13/75885 [00:07<12:21:38,  1.71it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 13/75885 [00:07<12:21:38,  1.71it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.2292, device='cuda:0')
+
+Validation DataLoader 0:   9%|8         | 4/46 [00:00<00:08,  4.98it/s][A
+Validation DataLoader 0:   9%|8         | 4/46 [00:00<00:08,  4.98it/s][AEpoch 0:   0%|          | 14/75885 [00:07<11:46:29,  1.79it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 14/75885 [00:07<11:46:29,  1.79it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.4007, device='cuda:0')
+
+Validation DataLoader 0:  11%|#         | 5/46 [00:01<00:10,  4.04it/s][A
+Validation DataLoader 0:  11%|#         | 5/46 [00:01<00:10,  4.04it/s][AEpoch 0:   0%|          | 15/75885 [00:08<11:27:18,  1.84it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 15/75885 [00:08<11:27:19,  1.84it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.1977, device='cuda:0')
+
+Validation DataLoader 0:  13%|#3        | 6/46 [00:01<00:09,  4.33it/s][A
+Validation DataLoader 0:  13%|#3        | 6/46 [00:01<00:09,  4.33it/s][AEpoch 0:   0%|          | 16/75885 [00:08<10:59:59,  1.92it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 16/75885 [00:08<11:00:00,  1.92it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.4994, device='cuda:0')
+
+Validation DataLoader 0:  15%|#5        | 7/46 [00:01<00:08,  4.54it/s][A
+Validation DataLoader 0:  15%|#5        | 7/46 [00:01<00:08,  4.54it/s][AEpoch 0:   0%|          | 17/75885 [00:08<10:35:59,  1.99it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 17/75885 [00:08<10:35:59,  1.99it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.4819, device='cuda:0')
+
+Validation DataLoader 0:  17%|#7        | 8/46 [00:01<00:08,  4.62it/s][A
+Validation DataLoader 0:  17%|#7        | 8/46 [00:01<00:08,  4.62it/s][AEpoch 0:   0%|          | 18/75885 [00:08<10:15:11,  2.06it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 18/75885 [00:08<10:15:11,  2.06it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.4966, device='cuda:0')
+
+Validation DataLoader 0:  20%|#9        | 9/46 [00:01<00:07,  4.74it/s][A
+Validation DataLoader 0:  20%|#9        | 9/46 [00:01<00:07,  4.74it/s][AEpoch 0:   0%|          | 19/75885 [00:08<9:56:03,  2.12it/s, loss=1.94, v_num=35, train_loss=1.920] Epoch 0:   0%|          | 19/75885 [00:08<9:56:04,  2.12it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(0.8673, device='cuda:0')
+
+Validation DataLoader 0:  22%|##1       | 10/46 [00:02<00:07,  4.83it/s][A
+Validation DataLoader 0:  22%|##1       | 10/46 [00:02<00:07,  4.83it/s][AEpoch 0:   0%|          | 20/75885 [00:09<9:38:47,  2.18it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 20/75885 [00:09<9:38:48,  2.18it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.0907, device='cuda:0')
+
+Validation DataLoader 0:  24%|##3       | 11/46 [00:02<00:07,  4.89it/s][A
+Validation DataLoader 0:  24%|##3       | 11/46 [00:02<00:07,  4.89it/s][AEpoch 0:   0%|          | 21/75885 [00:09<9:23:12,  2.25it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 21/75885 [00:09<9:23:12,  2.25it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.6450, device='cuda:0')
+
+Validation DataLoader 0:  26%|##6       | 12/46 [00:02<00:06,  4.93it/s][A
+Validation DataLoader 0:  26%|##6       | 12/46 [00:02<00:06,  4.93it/s][AEpoch 0:   0%|          | 22/75885 [00:09<9:09:00,  2.30it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 22/75885 [00:09<9:09:00,  2.30it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.8656, device='cuda:0')
+
+Validation DataLoader 0:  28%|##8       | 13/46 [00:02<00:06,  4.96it/s][A
+Validation DataLoader 0:  28%|##8       | 13/46 [00:02<00:06,  4.96it/s][AEpoch 0:   0%|          | 23/75885 [00:09<8:56:02,  2.36it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 23/75885 [00:09<8:56:02,  2.36it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(0.7942, device='cuda:0')
+
+Validation DataLoader 0:  30%|###       | 14/46 [00:02<00:06,  4.98it/s][A
+Validation DataLoader 0:  30%|###       | 14/46 [00:02<00:06,  4.98it/s][AEpoch 0:   0%|          | 24/75885 [00:09<8:44:10,  2.41it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 24/75885 [00:09<8:44:10,  2.41it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.3641, device='cuda:0')
+
+Validation DataLoader 0:  33%|###2      | 15/46 [00:03<00:06,  5.00it/s][A
+Validation DataLoader 0:  33%|###2      | 15/46 [00:03<00:06,  5.00it/s][AEpoch 0:   0%|          | 25/75885 [00:10<8:33:15,  2.46it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 25/75885 [00:10<8:33:15,  2.46it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.3675, device='cuda:0')
+
+Validation DataLoader 0:  35%|###4      | 16/46 [00:03<00:06,  4.79it/s][A
+Validation DataLoader 0:  35%|###4      | 16/46 [00:03<00:06,  4.79it/s][AEpoch 0:   0%|          | 26/75885 [00:10<8:24:39,  2.51it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 26/75885 [00:10<8:24:40,  2.51it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(2.0242, device='cuda:0')
+
+Validation DataLoader 0:  37%|###6      | 17/46 [00:03<00:05,  4.85it/s][A
+Validation DataLoader 0:  37%|###6      | 17/46 [00:03<00:05,  4.85it/s][AEpoch 0:   0%|          | 27/75885 [00:10<8:15:20,  2.55it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 27/75885 [00:10<8:15:20,  2.55it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.8818, device='cuda:0')
+
+Validation DataLoader 0:  39%|###9      | 18/46 [00:03<00:05,  4.90it/s][A
+Validation DataLoader 0:  39%|###9      | 18/46 [00:03<00:05,  4.90it/s][AEpoch 0:   0%|          | 28/75885 [00:10<8:06:38,  2.60it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 28/75885 [00:10<8:06:38,  2.60it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(0.9463, device='cuda:0')
+
+Validation DataLoader 0:  41%|####1     | 19/46 [00:03<00:05,  4.93it/s][A
+Validation DataLoader 0:  41%|####1     | 19/46 [00:03<00:05,  4.93it/s][AEpoch 0:   0%|          | 29/75885 [00:10<7:58:35,  2.64it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 29/75885 [00:10<7:58:35,  2.64it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.2155, device='cuda:0')
+
+Validation DataLoader 0:  43%|####3     | 20/46 [00:04<00:05,  4.94it/s][A
+Validation DataLoader 0:  43%|####3     | 20/46 [00:04<00:05,  4.94it/s][AEpoch 0:   0%|          | 30/75885 [00:11<7:51:04,  2.68it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 30/75885 [00:11<7:51:04,  2.68it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.3667, device='cuda:0')
+
+Validation DataLoader 0:  46%|####5     | 21/46 [00:04<00:05,  4.97it/s][A
+Validation DataLoader 0:  46%|####5     | 21/46 [00:04<00:05,  4.97it/s][AEpoch 0:   0%|          | 31/75885 [00:11<7:43:59,  2.72it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 31/75885 [00:11<7:43:59,  2.72it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.1155, device='cuda:0')
+
+Validation DataLoader 0:  48%|####7     | 22/46 [00:04<00:05,  4.78it/s][A
+Validation DataLoader 0:  48%|####7     | 22/46 [00:04<00:05,  4.78it/s][AEpoch 0:   0%|          | 32/75885 [00:11<7:38:28,  2.76it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 32/75885 [00:11<7:38:28,  2.76it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.8207, device='cuda:0')
+
+Validation DataLoader 0:  50%|#####     | 23/46 [00:04<00:04,  4.85it/s][A
+Validation DataLoader 0:  50%|#####     | 23/46 [00:04<00:04,  4.85it/s][AEpoch 0:   0%|          | 33/75885 [00:11<7:32:12,  2.80it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 33/75885 [00:11<7:32:12,  2.80it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.3501, device='cuda:0')
+
+Validation DataLoader 0:  52%|#####2    | 24/46 [00:04<00:04,  4.90it/s][A
+Validation DataLoader 0:  52%|#####2    | 24/46 [00:04<00:04,  4.90it/s][AEpoch 0:   0%|          | 34/75885 [00:12<7:26:18,  2.83it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 34/75885 [00:12<7:26:18,  2.83it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.1703, device='cuda:0')
+
+Validation DataLoader 0:  54%|#####4    | 25/46 [00:05<00:04,  4.94it/s][A
+Validation DataLoader 0:  54%|#####4    | 25/46 [00:05<00:04,  4.94it/s][AEpoch 0:   0%|          | 35/75885 [00:12<7:20:43,  2.87it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 35/75885 [00:12<7:20:44,  2.87it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.4405, device='cuda:0')
+
+Validation DataLoader 0:  57%|#####6    | 26/46 [00:05<00:04,  4.97it/s][A
+Validation DataLoader 0:  57%|#####6    | 26/46 [00:05<00:04,  4.97it/s][AEpoch 0:   0%|          | 36/75885 [00:12<7:15:27,  2.90it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 36/75885 [00:12<7:15:27,  2.90it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.2732, device='cuda:0')
+
+Validation DataLoader 0:  59%|#####8    | 27/46 [00:05<00:03,  4.98it/s][A
+Validation DataLoader 0:  59%|#####8    | 27/46 [00:05<00:03,  4.98it/s][AEpoch 0:   0%|          | 37/75885 [00:12<7:10:28,  2.94it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 37/75885 [00:12<7:10:29,  2.94it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.3912, device='cuda:0')
+
+Validation DataLoader 0:  61%|######    | 28/46 [00:05<00:03,  5.00it/s][A
+Validation DataLoader 0:  61%|######    | 28/46 [00:05<00:03,  5.00it/s][AEpoch 0:   0%|          | 38/75885 [00:12<7:05:45,  2.97it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 38/75885 [00:12<7:05:45,  2.97it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.1760, device='cuda:0')
+
+Validation DataLoader 0:  63%|######3   | 29/46 [00:05<00:03,  5.01it/s][A
+Validation DataLoader 0:  63%|######3   | 29/46 [00:05<00:03,  5.01it/s][AEpoch 0:   0%|          | 39/75885 [00:12<7:01:16,  3.00it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 39/75885 [00:12<7:01:16,  3.00it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.7981, device='cuda:0')
+
+Validation DataLoader 0:  65%|######5   | 30/46 [00:06<00:03,  4.38it/s][A
+Validation DataLoader 0:  65%|######5   | 30/46 [00:06<00:03,  4.38it/s][AEpoch 0:   0%|          | 40/75885 [00:13<7:00:05,  3.01it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 40/75885 [00:13<7:00:05,  3.01it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.7074, device='cuda:0')
+
+Validation DataLoader 0:  67%|######7   | 31/46 [00:06<00:03,  4.55it/s][A
+Validation DataLoader 0:  67%|######7   | 31/46 [00:06<00:03,  4.55it/s][AEpoch 0:   0%|          | 41/75885 [00:13<6:55:58,  3.04it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 41/75885 [00:13<6:55:59,  3.04it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.5232, device='cuda:0')
+
+Validation DataLoader 0:  70%|######9   | 32/46 [00:06<00:02,  4.68it/s][A
+Validation DataLoader 0:  70%|######9   | 32/46 [00:06<00:02,  4.68it/s][AEpoch 0:   0%|          | 42/75885 [00:13<6:52:06,  3.07it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 42/75885 [00:13<6:52:06,  3.07it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.4080, device='cuda:0')
+
+Validation DataLoader 0:  72%|#######1  | 33/46 [00:06<00:02,  4.66it/s][A
+Validation DataLoader 0:  72%|#######1  | 33/46 [00:06<00:02,  4.66it/s][AEpoch 0:   0%|          | 43/75885 [00:13<6:48:52,  3.09it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 43/75885 [00:13<6:48:52,  3.09it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.2304, device='cuda:0')
+
+Validation DataLoader 0:  74%|#######3  | 34/46 [00:07<00:02,  4.76it/s][A
+Validation DataLoader 0:  74%|#######3  | 34/46 [00:07<00:02,  4.76it/s][AEpoch 0:   0%|          | 44/75885 [00:14<6:45:17,  3.12it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 44/75885 [00:14<6:45:18,  3.12it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.4172, device='cuda:0')
+
+Validation DataLoader 0:  76%|#######6  | 35/46 [00:07<00:02,  4.82it/s][A
+Validation DataLoader 0:  76%|#######6  | 35/46 [00:07<00:02,  4.82it/s][AEpoch 0:   0%|          | 45/75885 [00:14<6:41:57,  3.14it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 45/75885 [00:14<6:41:57,  3.14it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.3606, device='cuda:0')
+
+Validation DataLoader 0:  78%|#######8  | 36/46 [00:07<00:02,  4.68it/s][A
+Validation DataLoader 0:  78%|#######8  | 36/46 [00:07<00:02,  4.68it/s][AEpoch 0:   0%|          | 46/75885 [00:14<6:39:29,  3.16it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 46/75885 [00:14<6:39:29,  3.16it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.6041, device='cuda:0')
+
+Validation DataLoader 0:  80%|########  | 37/46 [00:07<00:01,  4.77it/s][A
+Validation DataLoader 0:  80%|########  | 37/46 [00:07<00:01,  4.77it/s][AEpoch 0:   0%|          | 47/75885 [00:14<6:36:21,  3.19it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 47/75885 [00:14<6:36:21,  3.19it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.5280, device='cuda:0')
+
+Validation DataLoader 0:  83%|########2 | 38/46 [00:07<00:01,  4.83it/s][A
+Validation DataLoader 0:  83%|########2 | 38/46 [00:07<00:01,  4.83it/s][AEpoch 0:   0%|          | 48/75885 [00:14<6:33:22,  3.21it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 48/75885 [00:14<6:33:22,  3.21it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.0173, device='cuda:0')
+
+Validation DataLoader 0:  85%|########4 | 39/46 [00:08<00:01,  4.82it/s][A
+Validation DataLoader 0:  85%|########4 | 39/46 [00:08<00:01,  4.82it/s][AEpoch 0:   0%|          | 49/75885 [00:15<6:30:42,  3.23it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 49/75885 [00:15<6:30:43,  3.23it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.3908, device='cuda:0')
+
+Validation DataLoader 0:  87%|########6 | 40/46 [00:08<00:01,  4.89it/s][A
+Validation DataLoader 0:  87%|########6 | 40/46 [00:08<00:01,  4.89it/s][AEpoch 0:   0%|          | 50/75885 [00:15<6:27:54,  3.26it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 50/75885 [00:15<6:27:54,  3.26it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.5382, device='cuda:0')
+
+Validation DataLoader 0:  89%|########9 | 41/46 [00:08<00:01,  4.93it/s][A
+Validation DataLoader 0:  89%|########9 | 41/46 [00:08<00:01,  4.93it/s][AEpoch 0:   0%|          | 51/75885 [00:15<6:25:13,  3.28it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 51/75885 [00:15<6:25:13,  3.28it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.5406, device='cuda:0')
+
+Validation DataLoader 0:  91%|#########1| 42/46 [00:08<00:00,  4.96it/s][A
+Validation DataLoader 0:  91%|#########1| 42/46 [00:08<00:00,  4.96it/s][AEpoch 0:   0%|          | 52/75885 [00:15<6:22:38,  3.30it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 52/75885 [00:15<6:22:38,  3.30it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(0.9346, device='cuda:0')
+
+Validation DataLoader 0:  93%|#########3| 43/46 [00:08<00:00,  4.98it/s][A
+Validation DataLoader 0:  93%|#########3| 43/46 [00:08<00:00,  4.98it/s][AEpoch 0:   0%|          | 53/75885 [00:15<6:20:09,  3.32it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 53/75885 [00:15<6:20:09,  3.32it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.8178, device='cuda:0')
+
+Validation DataLoader 0:  96%|#########5| 44/46 [00:09<00:00,  4.89it/s][A
+Validation DataLoader 0:  96%|#########5| 44/46 [00:09<00:00,  4.89it/s][AEpoch 0:   0%|          | 54/75885 [00:16<6:18:05,  3.34it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 54/75885 [00:16<6:18:05,  3.34it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.5423, device='cuda:0')
+
+Validation DataLoader 0:  98%|#########7| 45/46 [00:09<00:00,  4.94it/s][A
+Validation DataLoader 0:  98%|#########7| 45/46 [00:09<00:00,  4.94it/s][AEpoch 0:   0%|          | 55/75885 [00:16<6:15:45,  3.36it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 55/75885 [00:16<6:15:46,  3.36it/s, loss=1.94, v_num=35, train_loss=1.920]Val_loss tensor(1.9325, device='cuda:0')
+
+Validation DataLoader 0: 100%|##########| 46/46 [00:09<00:00,  5.42it/s][A
+Validation DataLoader 0: 100%|##########| 46/46 [00:09<00:00,  5.42it/s][AEpoch 0:   0%|          | 56/75885 [00:16<6:12:15,  3.39it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 56/75885 [00:16<6:12:15,  3.39it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 56/75885 [00:16<6:12:20,  3.39it/s, loss=1.94, v_num=35, train_loss=1.920]
+                                                                        [AEpoch 0:   0%|          | 57/75885 [00:46<17:16:08,  1.22it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 57/75885 [00:46<17:16:08,  1.22it/s, loss=1.94, v_num=35, train_loss=1.920]Epoch 0:   0%|          | 57/75885 [00:46<17:16:18,  1.22it/s, loss=1.92, v_num=35, train_loss=1.720]Epoch 0:   0%|          | 58/75885 [00:47<17:12:16,  1.22it/s, loss=1.92, v_num=35, train_loss=1.720]Epoch 0:   0%|          | 58/75885 [00:47<17:12:17,  1.22it/s, loss=1.92, v_num=35, train_loss=1.720]Epoch 0:   0%|          | 58/75885 [00:47<17:12:26,  1.22it/s, loss=1.86, v_num=35, train_loss=1.170]Epoch 0:   0%|          | 59/75885 [00:48<17:09:02,  1.23it/s, loss=1.86, v_num=35, train_loss=1.170]Epoch 0:   0%|          | 59/75885 [00:48<17:09:03,  1.23it/s, loss=1.86, v_num=35, train_loss=1.170]Epoch 0:   0%|          | 59/75885 [00:48<17:09:07,  1.23it/s, loss=1.8, v_num=35, train_loss=1.150] Epoch 0:   0%|          | 60/75885 [00:48<17:05:08,  1.23it/s, loss=1.8, v_num=35, train_loss=1.150]Epoch 0:   0%|          | 60/75885 [00:48<17:05:09,  1.23it/s, loss=1.8, v_num=35, train_loss=1.150]Epoch 0:   0%|          | 60/75885 [00:48<17:05:18,  1.23it/s, loss=1.8, v_num=35, train_loss=1.710]Epoch 0:   0%|          | 61/75885 [00:49<17:01:25,  1.24it/s, loss=1.8, v_num=35, train_loss=1.710]Epoch 0:   0%|          | 61/75885 [00:49<17:01:26,  1.24it/s, loss=1.8, v_num=35, train_loss=1.710]Epoch 0:   0%|          | 61/75885 [00:49<17:01:34,  1.24it/s, loss=1.83, v_num=35, train_loss=2.310]Epoch 0:   0%|          | 62/75885 [00:49<16:57:50,  1.24it/s, loss=1.83, v_num=35, train_loss=2.310]Epoch 0:   0%|          | 62/75885 [00:49<16:57:50,  1.24it/s, loss=1.83, v_num=35, train_loss=2.310]Epoch 0:   0%|          | 62/75885 [00:49<16:57:59,  1.24it/s, loss=1.81, v_num=35, train_loss=1.490]Epoch 0:   0%|          | 63/75885 [00:50<16:54:21,  1.25it/s, loss=1.81, v_num=35, train_loss=1.490]Epoch 0:   0%|          | 63/75885 [00:50<16:54:22,  1.25it/s, loss=1.81, v_num=35, train_loss=1.490]Epoch 0:   0%|          | 63/75885 [00:50<16:54:27,  1.25it/s, loss=1.82, v_num=35, train_loss=2.040]Epoch 0:   0%|          | 64/75885 [00:51<16:50:56,  1.25it/s, loss=1.82, v_num=35, train_loss=2.040]Epoch 0:   0%|          | 64/75885 [00:51<16:50:57,  1.25it/s, loss=1.82, v_num=35, train_loss=2.040]Epoch 0:   0%|          | 64/75885 [00:51<16:51:05,  1.25it/s, loss=1.81, v_num=35, train_loss=1.570]Epoch 0:   0%|          | 65/75885 [00:51<16:47:38,  1.25it/s, loss=1.81, v_num=35, train_loss=1.570]Epoch 0:   0%|          | 65/75885 [00:51<16:47:38,  1.25it/s, loss=1.81, v_num=35, train_loss=1.570]Epoch 0:   0%|          | 65/75885 [00:51<16:47:47,  1.25it/s, loss=1.78, v_num=35, train_loss=1.270]Epoch 0:   0%|          | 66/75885 [00:52<16:44:27,  1.26it/s, loss=1.78, v_num=35, train_loss=1.270]Epoch 0:   0%|          | 66/75885 [00:52<16:44:28,  1.26it/s, loss=1.78, v_num=35, train_loss=1.270]Epoch 0:   0%|          | 66/75885 [00:52<16:44:36,  1.26it/s, loss=1.76, v_num=35, train_loss=1.330]
+Validation: 0it [00:00, ?it/s][A
+Validation:   0%|          | 0/46 [00:00<?, ?it/s][A
+Validation DataLoader 0:   0%|          | 0/46 [00:00<?, ?it/s][AVal_loss tensor(1.3665, device='cuda:0')
+
+Validation DataLoader 0:   2%|2         | 1/46 [00:00<00:09,  4.66it/s][A
+Validation DataLoader 0:   2%|2         | 1/46 [00:00<00:09,  4.66it/s][AEpoch 0:   0%|          | 67/75885 [00:52<16:38:04,  1.27it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 67/75885 [00:52<16:38:04,  1.27it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.5524, device='cuda:0')
+
+Validation DataLoader 0:   4%|4         | 2/46 [00:00<00:09,  4.86it/s][A
+Validation DataLoader 0:   4%|4         | 2/46 [00:00<00:09,  4.86it/s][AEpoch 0:   0%|          | 68/75885 [00:53<16:27:05,  1.28it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 68/75885 [00:53<16:27:05,  1.28it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.6128, device='cuda:0')
+
+Validation DataLoader 0:   7%|6         | 3/46 [00:00<00:08,  4.89it/s][A
+Validation DataLoader 0:   7%|6         | 3/46 [00:00<00:08,  4.89it/s][AEpoch 0:   0%|          | 69/75885 [00:53<16:16:29,  1.29it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 69/75885 [00:53<16:16:29,  1.29it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.1972, device='cuda:0')
+
+Validation DataLoader 0:   9%|8         | 4/46 [00:00<00:08,  4.94it/s][A
+Validation DataLoader 0:   9%|8         | 4/46 [00:00<00:08,  4.94it/s][AEpoch 0:   0%|          | 70/75885 [00:53<16:06:07,  1.31it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 70/75885 [00:53<16:06:07,  1.31it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.3850, device='cuda:0')
+
+Validation DataLoader 0:  11%|#         | 5/46 [00:01<00:08,  4.97it/s][A
+Validation DataLoader 0:  11%|#         | 5/46 [00:01<00:08,  4.97it/s][AEpoch 0:   0%|          | 71/75885 [00:53<15:56:02,  1.32it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 71/75885 [00:53<15:56:02,  1.32it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.1626, device='cuda:0')
+
+Validation DataLoader 0:  13%|#3        | 6/46 [00:01<00:08,  4.99it/s][A
+Validation DataLoader 0:  13%|#3        | 6/46 [00:01<00:08,  4.99it/s][AEpoch 0:   0%|          | 72/75885 [00:53<15:46:14,  1.34it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 72/75885 [00:53<15:46:14,  1.34it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.4830, device='cuda:0')
+
+Validation DataLoader 0:  15%|#5        | 7/46 [00:01<00:07,  4.99it/s][A
+Validation DataLoader 0:  15%|#5        | 7/46 [00:01<00:07,  4.99it/s][AEpoch 0:   0%|          | 73/75885 [00:54<15:36:43,  1.35it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 73/75885 [00:54<15:36:43,  1.35it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.4521, device='cuda:0')
+
+Validation DataLoader 0:  17%|#7        | 8/46 [00:01<00:07,  4.92it/s][A
+Validation DataLoader 0:  17%|#7        | 8/46 [00:01<00:07,  4.92it/s][AEpoch 0:   0%|          | 74/75885 [00:54<15:27:38,  1.36it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 74/75885 [00:54<15:27:38,  1.36it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.4525, device='cuda:0')
+
+Validation DataLoader 0:  20%|#9        | 9/46 [00:01<00:07,  4.96it/s][A
+Validation DataLoader 0:  20%|#9        | 9/46 [00:01<00:07,  4.96it/s][AEpoch 0:   0%|          | 75/75885 [00:54<15:18:35,  1.38it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 75/75885 [00:54<15:18:35,  1.38it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(0.8360, device='cuda:0')
+
+Validation DataLoader 0:  22%|##1       | 10/46 [00:02<00:07,  4.93it/s][A
+Validation DataLoader 0:  22%|##1       | 10/46 [00:02<00:07,  4.93it/s][AEpoch 0:   0%|          | 76/75885 [00:54<15:09:53,  1.39it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 76/75885 [00:54<15:09:54,  1.39it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.0641, device='cuda:0')
+
+Validation DataLoader 0:  24%|##3       | 11/46 [00:02<00:07,  4.83it/s][A
+Validation DataLoader 0:  24%|##3       | 11/46 [00:02<00:07,  4.83it/s][AEpoch 0:   0%|          | 77/75885 [00:54<15:01:37,  1.40it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 77/75885 [00:54<15:01:37,  1.40it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.6142, device='cuda:0')
+
+Validation DataLoader 0:  26%|##6       | 12/46 [00:02<00:06,  4.89it/s][A
+Validation DataLoader 0:  26%|##6       | 12/46 [00:02<00:06,  4.89it/s][AEpoch 0:   0%|          | 78/75885 [00:55<14:53:17,  1.41it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 78/75885 [00:55<14:53:17,  1.41it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.8357, device='cuda:0')
+
+Validation DataLoader 0:  28%|##8       | 13/46 [00:02<00:06,  4.92it/s][A
+Validation DataLoader 0:  28%|##8       | 13/46 [00:02<00:06,  4.92it/s][AEpoch 0:   0%|          | 79/75885 [00:55<14:45:10,  1.43it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 79/75885 [00:55<14:45:10,  1.43it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(0.7507, device='cuda:0')
+
+Validation DataLoader 0:  30%|###       | 14/46 [00:02<00:06,  4.88it/s][A
+Validation DataLoader 0:  30%|###       | 14/46 [00:02<00:06,  4.88it/s][AEpoch 0:   0%|          | 80/75885 [00:55<14:37:23,  1.44it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 80/75885 [00:55<14:37:23,  1.44it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.3567, device='cuda:0')
+
+Validation DataLoader 0:  33%|###2      | 15/46 [00:03<00:06,  4.93it/s][A
+Validation DataLoader 0:  33%|###2      | 15/46 [00:03<00:06,  4.93it/s][AEpoch 0:   0%|          | 81/75885 [00:55<14:29:38,  1.45it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 81/75885 [00:55<14:29:38,  1.45it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.3161, device='cuda:0')
+
+Validation DataLoader 0:  35%|###4      | 16/46 [00:03<00:06,  4.95it/s][A
+Validation DataLoader 0:  35%|###4      | 16/46 [00:03<00:06,  4.95it/s][AEpoch 0:   0%|          | 82/75885 [00:55<14:22:06,  1.47it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 82/75885 [00:55<14:22:06,  1.47it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.9975, device='cuda:0')
+
+Validation DataLoader 0:  37%|###6      | 17/46 [00:03<00:05,  4.96it/s][A
+Validation DataLoader 0:  37%|###6      | 17/46 [00:03<00:05,  4.96it/s][AEpoch 0:   0%|          | 83/75885 [00:56<14:14:45,  1.48it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 83/75885 [00:56<14:14:45,  1.48it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.8602, device='cuda:0')
+
+Validation DataLoader 0:  39%|###9      | 18/46 [00:03<00:05,  4.93it/s][A
+Validation DataLoader 0:  39%|###9      | 18/46 [00:03<00:05,  4.93it/s][AEpoch 0:   0%|          | 84/75885 [00:56<14:07:40,  1.49it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 84/75885 [00:56<14:07:40,  1.49it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(0.9232, device='cuda:0')
+
+Validation DataLoader 0:  41%|####1     | 19/46 [00:03<00:05,  4.91it/s][A
+Validation DataLoader 0:  41%|####1     | 19/46 [00:03<00:05,  4.91it/s][AEpoch 0:   0%|          | 85/75885 [00:56<14:00:44,  1.50it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 85/75885 [00:56<14:00:44,  1.50it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.2096, device='cuda:0')
+
+Validation DataLoader 0:  43%|####3     | 20/46 [00:04<00:05,  4.87it/s][A
+Validation DataLoader 0:  43%|####3     | 20/46 [00:04<00:05,  4.87it/s][AEpoch 0:   0%|          | 86/75885 [00:56<13:54:01,  1.51it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 86/75885 [00:56<13:54:01,  1.51it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.3490, device='cuda:0')
+
+Validation DataLoader 0:  46%|####5     | 21/46 [00:04<00:05,  4.92it/s][A
+Validation DataLoader 0:  46%|####5     | 21/46 [00:04<00:05,  4.92it/s][AEpoch 0:   0%|          | 87/75885 [00:56<13:47:18,  1.53it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 87/75885 [00:56<13:47:18,  1.53it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.0975, device='cuda:0')
+
+Validation DataLoader 0:  48%|####7     | 22/46 [00:04<00:04,  4.95it/s][A
+Validation DataLoader 0:  48%|####7     | 22/46 [00:04<00:04,  4.95it/s][AEpoch 0:   0%|          | 88/75885 [00:57<13:40:45,  1.54it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 88/75885 [00:57<13:40:45,  1.54it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.8082, device='cuda:0')
+
+Validation DataLoader 0:  50%|#####     | 23/46 [00:04<00:04,  4.96it/s][A
+Validation DataLoader 0:  50%|#####     | 23/46 [00:04<00:04,  4.96it/s][AEpoch 0:   0%|          | 89/75885 [00:57<13:34:22,  1.55it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 89/75885 [00:57<13:34:22,  1.55it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.3074, device='cuda:0')
+
+Validation DataLoader 0:  52%|#####2    | 24/46 [00:04<00:04,  4.98it/s][A
+Validation DataLoader 0:  52%|#####2    | 24/46 [00:04<00:04,  4.98it/s][AEpoch 0:   0%|          | 90/75885 [00:57<13:28:06,  1.56it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 90/75885 [00:57<13:28:06,  1.56it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.1455, device='cuda:0')
+
+Validation DataLoader 0:  54%|#####4    | 25/46 [00:05<00:04,  4.99it/s][A
+Validation DataLoader 0:  54%|#####4    | 25/46 [00:05<00:04,  4.99it/s][AEpoch 0:   0%|          | 91/75885 [00:57<13:21:58,  1.58it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 91/75885 [00:57<13:21:58,  1.58it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.4229, device='cuda:0')
+
+Validation DataLoader 0:  57%|#####6    | 26/46 [00:05<00:03,  5.00it/s][A
+Validation DataLoader 0:  57%|#####6    | 26/46 [00:05<00:03,  5.00it/s][AEpoch 0:   0%|          | 92/75885 [00:57<13:15:59,  1.59it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 92/75885 [00:57<13:15:59,  1.59it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.2547, device='cuda:0')
+
+Validation DataLoader 0:  59%|#####8    | 27/46 [00:05<00:03,  5.01it/s][A
+Validation DataLoader 0:  59%|#####8    | 27/46 [00:05<00:03,  5.01it/s][AEpoch 0:   0%|          | 93/75885 [00:58<13:10:06,  1.60it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 93/75885 [00:58<13:10:06,  1.60it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.3620, device='cuda:0')
+
+Validation DataLoader 0:  61%|######    | 28/46 [00:05<00:03,  5.02it/s][A
+Validation DataLoader 0:  61%|######    | 28/46 [00:05<00:03,  5.02it/s][AEpoch 0:   0%|          | 94/75885 [00:58<13:04:22,  1.61it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 94/75885 [00:58<13:04:22,  1.61it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.1637, device='cuda:0')
+
+Validation DataLoader 0:  63%|######3   | 29/46 [00:05<00:03,  5.02it/s][A
+Validation DataLoader 0:  63%|######3   | 29/46 [00:05<00:03,  5.02it/s][AEpoch 0:   0%|          | 95/75885 [00:58<12:58:44,  1.62it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 95/75885 [00:58<12:58:44,  1.62it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.7633, device='cuda:0')
+
+Validation DataLoader 0:  65%|######5   | 30/46 [00:06<00:03,  5.03it/s][A
+Validation DataLoader 0:  65%|######5   | 30/46 [00:06<00:03,  5.03it/s][AEpoch 0:   0%|          | 96/75885 [00:58<12:53:13,  1.63it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 96/75885 [00:58<12:53:13,  1.63it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.6700, device='cuda:0')
+
+Validation DataLoader 0:  67%|######7   | 31/46 [00:06<00:02,  5.03it/s][A
+Validation DataLoader 0:  67%|######7   | 31/46 [00:06<00:02,  5.03it/s][AEpoch 0:   0%|          | 97/75885 [00:58<12:47:50,  1.65it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 97/75885 [00:58<12:47:50,  1.65it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.4923, device='cuda:0')
+
+Validation DataLoader 0:  70%|######9   | 32/46 [00:06<00:02,  5.03it/s][A
+Validation DataLoader 0:  70%|######9   | 32/46 [00:06<00:02,  5.03it/s][AEpoch 0:   0%|          | 98/75885 [00:59<12:42:33,  1.66it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 98/75885 [00:59<12:42:33,  1.66it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.3933, device='cuda:0')
+
+Validation DataLoader 0:  72%|#######1  | 33/46 [00:06<00:02,  5.03it/s][A
+Validation DataLoader 0:  72%|#######1  | 33/46 [00:06<00:02,  5.03it/s][AEpoch 0:   0%|          | 99/75885 [00:59<12:37:22,  1.67it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 99/75885 [00:59<12:37:22,  1.67it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.2050, device='cuda:0')
+
+Validation DataLoader 0:  74%|#######3  | 34/46 [00:06<00:02,  4.62it/s][A
+Validation DataLoader 0:  74%|#######3  | 34/46 [00:06<00:02,  4.62it/s][AEpoch 0:   0%|          | 100/75885 [00:59<12:33:03,  1.68it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 100/75885 [00:59<12:33:03,  1.68it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.3821, device='cuda:0')
+
+Validation DataLoader 0:  76%|#######6  | 35/46 [00:07<00:02,  4.73it/s][A
+Validation DataLoader 0:  76%|#######6  | 35/46 [00:07<00:02,  4.73it/s][AEpoch 0:   0%|          | 101/75885 [00:59<12:28:04,  1.69it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 101/75885 [00:59<12:28:04,  1.69it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.3222, device='cuda:0')
+
+Validation DataLoader 0:  78%|#######8  | 36/46 [00:07<00:02,  4.79it/s][A
+Validation DataLoader 0:  78%|#######8  | 36/46 [00:07<00:02,  4.79it/s][AEpoch 0:   0%|          | 102/75885 [01:00<12:23:15,  1.70it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 102/75885 [01:00<12:23:15,  1.70it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.5812, device='cuda:0')
+
+Validation DataLoader 0:  80%|########  | 37/46 [00:07<00:02,  4.44it/s][A
+Validation DataLoader 0:  80%|########  | 37/46 [00:07<00:02,  4.44it/s][AEpoch 0:   0%|          | 103/75885 [01:00<12:19:15,  1.71it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 103/75885 [01:00<12:19:15,  1.71it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.4994, device='cuda:0')
+
+Validation DataLoader 0:  83%|########2 | 38/46 [00:07<00:01,  4.56it/s][A
+Validation DataLoader 0:  83%|########2 | 38/46 [00:07<00:01,  4.56it/s][AEpoch 0:   0%|          | 104/75885 [01:00<12:14:37,  1.72it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 104/75885 [01:00<12:14:37,  1.72it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(0.9976, device='cuda:0')
+
+Validation DataLoader 0:  85%|########4 | 39/46 [00:07<00:01,  4.68it/s][A
+Validation DataLoader 0:  85%|########4 | 39/46 [00:07<00:01,  4.68it/s][AEpoch 0:   0%|          | 105/75885 [01:00<12:10:02,  1.73it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 105/75885 [01:00<12:10:02,  1.73it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.3505, device='cuda:0')
+
+Validation DataLoader 0:  87%|########6 | 40/46 [00:08<00:01,  4.78it/s][A
+Validation DataLoader 0:  87%|########6 | 40/46 [00:08<00:01,  4.78it/s][AEpoch 0:   0%|          | 106/75885 [01:00<12:05:30,  1.74it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 106/75885 [01:00<12:05:30,  1.74it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.5119, device='cuda:0')
+
+Validation DataLoader 0:  89%|########9 | 41/46 [00:08<00:01,  4.85it/s][A
+Validation DataLoader 0:  89%|########9 | 41/46 [00:08<00:01,  4.85it/s][AEpoch 0:   0%|          | 107/75885 [01:01<12:01:04,  1.75it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 107/75885 [01:01<12:01:04,  1.75it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.5208, device='cuda:0')
+
+Validation DataLoader 0:  91%|#########1| 42/46 [00:08<00:00,  4.90it/s][A
+Validation DataLoader 0:  91%|#########1| 42/46 [00:08<00:00,  4.90it/s][AEpoch 0:   0%|          | 108/75885 [01:01<11:56:42,  1.76it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 108/75885 [01:01<11:56:42,  1.76it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(0.9089, device='cuda:0')
+
+Validation DataLoader 0:  93%|#########3| 43/46 [00:08<00:00,  4.94it/s][A
+Validation DataLoader 0:  93%|#########3| 43/46 [00:08<00:00,  4.94it/s][AEpoch 0:   0%|          | 109/75885 [01:01<11:52:25,  1.77it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 109/75885 [01:01<11:52:25,  1.77it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.7849, device='cuda:0')
+
+Validation DataLoader 0:  96%|#########5| 44/46 [00:08<00:00,  4.96it/s][A
+Validation DataLoader 0:  96%|#########5| 44/46 [00:08<00:00,  4.96it/s][AEpoch 0:   0%|          | 110/75885 [01:01<11:48:13,  1.78it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 110/75885 [01:01<11:48:13,  1.78it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.5163, device='cuda:0')
+
+Validation DataLoader 0:  98%|#########7| 45/46 [00:09<00:00,  4.98it/s][A
+Validation DataLoader 0:  98%|#########7| 45/46 [00:09<00:00,  4.98it/s][AEpoch 0:   0%|          | 111/75885 [01:01<11:44:06,  1.79it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 111/75885 [01:01<11:44:06,  1.79it/s, loss=1.76, v_num=35, train_loss=1.330]Val_loss tensor(1.9089, device='cuda:0')
+
+Validation DataLoader 0: 100%|##########| 46/46 [00:09<00:00,  5.36it/s][A
+Validation DataLoader 0: 100%|##########| 46/46 [00:09<00:00,  5.36it/s][AEpoch 0:   0%|          | 112/75885 [01:02<11:39:32,  1.81it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 112/75885 [01:02<11:39:32,  1.81it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 112/75885 [01:02<11:39:34,  1.81it/s, loss=1.76, v_num=35, train_loss=1.330]
+                                                                        [AEpoch 0:   0%|          | 112/75885 [01:32<17:19:35,  1.21it/s, loss=1.76, v_num=35, train_loss=1.330]Epoch 0:   0%|          | 112/75885 [01:32<17:19:36,  1.21it/s, loss=1.76, v_num=35, train_loss=1.330]
+training finished
+Saving model
+Saved model

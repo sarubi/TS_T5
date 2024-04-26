@@ -1,1 +1,0 @@
-{'BLEU': 52.13, 'SARI': 54.1, 'FKGL': 6.2, 'Compression ratio': 0.72, 'Sentence splits': 1.05, 'Levenshtein similarity': 0.75, 'Exact copies': 0.22, 'Additions proportion': 0.05, 'Deletions proportion': 0.31, 'Lexical complexity score': 8.08}
